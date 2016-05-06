@@ -9,6 +9,12 @@ describe Mixlib::Archive::Tar do
 
   let(:destination) { Dir.mktmpdir }
 
+  let(:gzip_header) { [0x1F, 0x8B].pack("C*") }
+
+  before do
+    allow(IO).to receive(:binread).and_return(nil)
+  end
+
   after do
     FileUtils.remove_entry destination
   end
@@ -21,6 +27,10 @@ describe Mixlib::Archive::Tar do
     end
 
     context "with a gzipped file" do
+      before do
+        allow(IO).to receive(:binread).and_return(gzip_header)
+      end
+
       it "creates the correct reader for a .tgz file" do
         extractor = described_class.new(tgz_archive)
         expect(File).to receive(:open).with(tgz_archive, "rb").and_return(raw)

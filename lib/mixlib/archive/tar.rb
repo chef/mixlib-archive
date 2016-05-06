@@ -46,14 +46,23 @@ module Mixlib
         end
       end
 
+      private
+
+      def is_gzip_file?(path)
+        # You cannot write "\x1F\x8B" because the default encoding of
+        # ruby >= 1.9.3 is UTF-8 and 8B is an invalid in UTF-8.
+        IO.binread(path, 2) == [0x1F, 0x8B].pack("C*")
+      end
+
       def reader(&block)
         raw = File.open(archive, "rb")
-        file = case archive
-               when /\.t?gz$/
+
+        file = if is_gzip_file?(archive)
                  Zlib::GzipReader.wrap(raw)
                else
                  raw
                end
+
         Gem::Package::TarReader.new(file, &block)
       ensure
         if file
