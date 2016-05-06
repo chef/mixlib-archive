@@ -1,4 +1,5 @@
 # Mixlib::Archive
+[![Build Status Master](https://travis-ci.org/chef/mixlib-archive.svg?branch=master)](https://travis-ci.org/chef/mixlib-archive)
 
 A very simple gem to extract archives.
 
