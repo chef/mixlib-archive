@@ -24,6 +24,8 @@ module Mixlib
               next
             end
             dest ||= File.join(destination, entry.full_name)
+            parent = File.dirname(dest)
+            FileUtils.mkdir_p(parent, mode: 0755)
 
             if entry.directory? || (entry.header.typeflag == "" && entry.full_name.end_with?("/"))
               File.delete(dest) if File.file?(dest)
