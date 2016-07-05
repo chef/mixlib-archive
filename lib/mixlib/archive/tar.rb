@@ -14,8 +14,14 @@ module Mixlib
         @options = options
       end
 
-      def extract(destination)
+      # Extracts the archive to the given +destination+
+      #
+      # === Parameters
+      # perms<Boolean>:: should the extracter use permissions from the archive.
+      # ignore[Array]:: an array of matches of file paths to ignore
+      def extract(destination, perms: true, ignore: [])
         # (http://stackoverflow.com/a/31310593/506908)
+        ignore_re = Regexp.union(ignore)
         reader do |tar|
           dest = nil
           tar.each do |entry|
@@ -23,19 +29,26 @@ module Mixlib
               dest = File.join(destination, entry.read.strip)
               next
             end
+            next if entry.full_name =~ ignore_re
             dest ||= File.join(destination, entry.full_name)
             parent = File.dirname(dest)
-            FileUtils.mkdir_p(parent, mode: 0755)
+            FileUtils.mkdir_p(parent)
 
             if entry.directory? || (entry.header.typeflag == "" && entry.full_name.end_with?("/"))
               File.delete(dest) if File.file?(dest)
-              FileUtils.mkdir_p(dest, mode: entry.header.mode, verbose: false)
+
+              if perms
+                FileUtils.mkdir_p(dest, mode: entry.header.mode, verbose: false)
+              else
+                FileUtils.mkdir_p(dest, verbose: false)
+              end
+
             elsif entry.file? || (entry.header.typeflag == "" && !entry.full_name.end_with?("/"))
               FileUtils.rm_rf(dest) if File.directory?(dest)
               File.open(dest, "wb") do |f|
                 f.print(entry.read)
               end
-              FileUtils.chmod(entry.header.mode, dest, verbose: false)
+              FileUtils.chmod(entry.header.mode, dest, verbose: false) if perms
             elsif entry.header.typeflag == "2"
               # handle symlink
               File.symlink(entry.header.linkname, dest)
