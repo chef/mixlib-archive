@@ -1,5 +1,6 @@
 require "mixlib/archive/tar"
 require "mixlib/archive/version"
+require "mixlib/log"
 
 module Mixlib
   class Archive
@@ -12,6 +13,12 @@ module Mixlib
       # for now we only support Tar format archives.
       @extractor = Mixlib::Archive::Tar.new(archive)
     end
+
+    class Log
+      extend Mixlib::Log
+    end
+
+    Log.level = :error
 
     def extract(destination, perms: true, ignore: [])
       create_and_empty(destination)
