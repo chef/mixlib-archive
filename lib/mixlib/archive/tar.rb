@@ -53,7 +53,7 @@ module Mixlib
               # handle symlink
               File.symlink(entry.header.linkname, dest)
             else
-              puts "unknown tar entry: #{entry.full_name} type: #{entry.header.typeflag}"
+              Mixlib::Archive::Log.warn "unknown tar entry: #{entry.full_name} type: #{entry.header.typeflag}"
             end
 
             dest = nil
@@ -73,6 +73,7 @@ module Mixlib
         raw = File.open(archive, "rb")
 
         file = if is_gzip_file?(archive)
+                 Mixlib::Archive::Log.debug "gzip file detected"
                  Zlib::GzipReader.wrap(raw)
                else
                  raw
