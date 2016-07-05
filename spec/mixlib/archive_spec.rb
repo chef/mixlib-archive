@@ -44,8 +44,13 @@ describe Mixlib::Archive do
     end
 
     it "runs the extractor" do
-      expect(extractor).to receive(:extract).with(destination)
+      expect(extractor).to receive(:extract).with(destination, { perms: true, ignore: [] })
       archive.extract(destination)
+    end
+
+    it "passes options to the extractor" do
+      expect(extractor).to receive(:extract).with(destination, { perms: false, ignore: [] })
+      archive.extract(destination, perms: false)
     end
   end
 

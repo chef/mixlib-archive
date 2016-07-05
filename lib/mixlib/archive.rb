@@ -13,10 +13,10 @@ module Mixlib
       @extractor = Mixlib::Archive::Tar.new(archive)
     end
 
-    def extract(destination)
+    def extract(destination, perms: true, ignore: [])
       create_and_empty(destination)
 
-      extractor.extract(destination)
+      extractor.extract(destination, perms: perms, ignore: ignore)
     end
 
     private
