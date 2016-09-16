@@ -37,6 +37,11 @@ describe Mixlib::Archive do
     end
   end
 
+  describe "#create" do
+    it "runs the archiver"
+    it "passes options to the archiver"
+  end
+
   describe "#extract" do
     it "creates the target directory" do
       expect(archive).to receive(:create_and_empty).with(destination).and_return(true)
