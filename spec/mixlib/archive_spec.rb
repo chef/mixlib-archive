@@ -5,11 +5,11 @@ describe Mixlib::Archive do
   let (:destination) { Dir.mktmpdir }
 
   let (:archive) { described_class.new(target) }
-  let (:extractor) { double(Mixlib::Archive::Tar, extract: true) }
+  let (:archiver) { double(Mixlib::Archive::Tar, extract: true) }
 
   before do
     allow(File).to receive(:expand_path).and_call_original
-    allow(Mixlib::Archive::Tar).to receive(:new).with(any_args).and_return(extractor)
+    allow(Mixlib::Archive::Tar).to receive(:new).with(any_args).and_return(archiver)
   end
 
   after do
@@ -24,12 +24,12 @@ describe Mixlib::Archive do
       expect { described_class.new("../foo", empty: true) }.not_to raise_error
     end
 
-    context "creates an extractor" do
+    context "creates an archiver" do
       let(:expanded_target) { "/my/expanded/target/fixtures/foo.tar" }
       before do
       end
 
-      it "with the correct extractor" do
+      it "with the correct archiver" do
         expect(File).to receive(:expand_path).with(target).and_return(expanded_target)
         expect(Mixlib::Archive::Tar).to receive(:new).with(expanded_target)
         described_class.new(target)
@@ -44,12 +44,12 @@ describe Mixlib::Archive do
     end
 
     it "runs the extractor" do
-      expect(extractor).to receive(:extract).with(destination, { perms: true, ignore: [] })
+      expect(archiver).to receive(:extract).with(destination, { perms: true, ignore: [] })
       archive.extract(destination)
     end
 
     it "passes options to the extractor" do
-      expect(extractor).to receive(:extract).with(destination, { perms: false, ignore: [] })
+      expect(archiver).to receive(:extract).with(destination, { perms: false, ignore: [] })
       archive.extract(destination, perms: false)
     end
   end

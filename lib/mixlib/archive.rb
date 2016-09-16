@@ -4,14 +4,15 @@ require "mixlib/log"
 
 module Mixlib
   class Archive
-    attr_reader :extractor
+    attr_reader :archiver
+    alias_method :extractor, :archiver
 
     def initialize(archive, empty: false)
       @empty = empty
 
       archive = File.expand_path(archive)
       # for now we only support Tar format archives.
-      @extractor = Mixlib::Archive::Tar.new(archive)
+      @archiver = Mixlib::Archive::Tar.new(archive)
     end
 
     class Log
@@ -23,7 +24,7 @@ module Mixlib
     def extract(destination, perms: true, ignore: [])
       create_and_empty(destination)
 
-      extractor.extract(destination, perms: perms, ignore: ignore)
+      archiver.extract(destination, perms: perms, ignore: ignore)
     end
 
     private
