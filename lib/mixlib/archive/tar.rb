@@ -61,6 +61,39 @@ module Mixlib
         end
       end
 
+      # Creates an archive with the given set of +files+
+      #
+      # === Parameters
+      # gzip<Boolean>:: should the archive be gzipped?
+      def create(files, gzip: false)
+        tgt_dir = File.dirname(archive)
+        target = Tempfile.new(File.basename(archive), tgt_dir)
+
+        Gem::Package::TarWriter.new(target) do |tar|
+          files.each do |fn|
+            mode = File.stat(fn).mode
+            file = File.open(fn, "rb")
+            tar.add_file(fn, mode) do |io|
+              io.write(file)
+            end
+            file.close
+          end
+        end
+
+        target.close
+        if gzip
+          Zlib::GzipWriter.open(archive) do |gz|
+            gz.mtime = File.mtime(target.path)
+            gz.orig_name = File.basename(archive)
+            gz.write IO.binread(target.path)
+          end
+        else
+          FileUtils.mv(target.path, archive)
+        end
+      ensure
+        target.close unless target.closed?
+      end
+
       private
 
       def is_gzip_file?(path)

@@ -3,6 +3,7 @@ require "spec_helper"
 describe Mixlib::Archive do
   let(:target) { "../fixtures/foo.tar" }
   let (:destination) { Dir.mktmpdir }
+  let (:files) { %w{ file dir/file new_file.rb } }
 
   let (:archive) { described_class.new(target) }
   let (:archiver) { double(Mixlib::Archive::Tar, extract: true) }
@@ -38,8 +39,15 @@ describe Mixlib::Archive do
   end
 
   describe "#create" do
-    it "runs the archiver"
-    it "passes options to the archiver"
+    it "runs the archiver" do
+      expect(archive).to receive(:create).with(files).and_return(true)
+      archive.create(files)
+    end
+
+    it "passes options to the archiver" do
+      expect(archive).to receive(:create).with(files, { gzip: true }).and_return(true)
+      archive.create(files, gzip: true)
+    end
   end
 
   describe "#extract" do

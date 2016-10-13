@@ -21,6 +21,10 @@ module Mixlib
 
     Log.level = :error
 
+    def create(files = [], gzip: false)
+      archiver.create(files, gzip: gzip)
+    end
+
     def extract(destination, perms: true, ignore: [])
       create_and_empty(destination)
 
