@@ -21,9 +21,18 @@ Or install it yourself as:
 
 ## Usage
 
+To extract an archive
+
 ```ruby
 tar = Mixlib::Artifact.new("/path/to/tar")
 tar.extract("/destination/directory")
+```
+
+To create an archive
+
+```ruby
+tar = Mixlib::Artifact.new("/path/to/foo.tar.gz")
+tar.create(%w{ file.rb file2.rb }, gzip: true)
 ```
 
 ## Development
