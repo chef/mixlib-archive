@@ -29,7 +29,10 @@ module Mixlib
               dest = File.join(destination, entry.read.strip)
               next
             end
-            next if entry.full_name =~ ignore_re
+            if entry.full_name =~ ignore_re
+              Mixlib::Archive::Log.warn "ignoring entry #{entry.full_name}"
+              next
+            end
             dest ||= File.join(destination, entry.full_name)
             parent = File.dirname(dest)
             FileUtils.mkdir_p(parent)
