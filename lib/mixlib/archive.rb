@@ -26,7 +26,7 @@ module Mixlib
     end
 
     def extract(destination, perms: true, ignore: [])
-      ignore = [/^\.$/, /\.{2}/] + Array(ignore)
+      ignore = [/^\.$/, /\.{2}#{path_separator}/] + Array(ignore)
 
       create_and_empty(destination)
 
@@ -34,6 +34,16 @@ module Mixlib
     end
 
     private
+
+    BACKSLASH = '\\'.freeze
+
+    def path_separator
+      if Gem.win_platform?
+        File::ALT_SEPARATOR || BACKSLASH
+      else
+        File::SEPARATOR
+      end
+    end
 
     def create_and_empty(destination)
       FileUtils.mkdir_p(destination)
