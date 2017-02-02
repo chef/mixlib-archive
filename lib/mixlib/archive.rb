@@ -26,6 +26,8 @@ module Mixlib
     end
 
     def extract(destination, perms: true, ignore: [])
+      ignore = [/^\.$/, /\.{2}/] + ignore
+
       create_and_empty(destination)
 
       archiver.extract(destination, perms: perms, ignore: ignore)

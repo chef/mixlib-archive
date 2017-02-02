@@ -21,6 +21,7 @@ describe Mixlib::Archive do
     it "accepts a path" do
       expect { described_class.new("../foo") }.not_to raise_error
     end
+
     it "allows the target to be emptied" do
       expect { described_class.new("../foo", empty: true) }.not_to raise_error
     end
@@ -57,13 +58,18 @@ describe Mixlib::Archive do
     end
 
     it "runs the extractor" do
-      expect(archiver).to receive(:extract).with(destination, { perms: true, ignore: [] })
+      expect(archiver).to receive(:extract).with(destination, { perms: true, ignore: [/^\.$/, /\.{2}/] })
       archive.extract(destination)
     end
 
     it "passes options to the extractor" do
-      expect(archiver).to receive(:extract).with(destination, { perms: false, ignore: [] })
+      expect(archiver).to receive(:extract).with(destination, { perms: false, ignore: [/^\.$/, /\.{2}/] })
       archive.extract(destination, perms: false)
+    end
+
+    it "allows the user to ignore more patterns" do
+      expect(archiver).to receive(:extract).with(destination, { perms: false, ignore: [/^\.$/, /\.{2}/, /^$/] })
+      archive.extract(destination, perms: false, ignore: [/^$/])
     end
   end
 
