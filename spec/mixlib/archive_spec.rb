@@ -71,6 +71,11 @@ describe Mixlib::Archive do
       expect(archiver).to receive(:extract).with(destination, { perms: false, ignore: [/^\.$/, /\.{2}/, /^$/] })
       archive.extract(destination, perms: false, ignore: [/^$/])
     end
+
+    it "accepts a single ignore pattern" do
+      expect(archiver).to receive(:extract).with(destination, { perms: false, ignore: [/^\.$/, /\.{2}/, /^$/] })
+      archive.extract(destination, perms: false, ignore: /^$/)
+    end
   end
 
   describe "#create_and_empty" do
