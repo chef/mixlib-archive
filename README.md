@@ -1,5 +1,5 @@
 # Mixlib::Archive
-[![Build Status Master](https://travis-ci.org/chef/mixlib-archive.svg?branch=master)](https://travis-ci.org/chef/mixlib-archive)
+[![Build Status Master](https://travis-ci.org/chef/mixlib-archive.svg?branch=master)](https://travis-ci.org/chef/mixlib-archive) [![Gem Version](https://badge.fury.io/rb/mixlib-archive.svg)](https://badge.fury.io/rb/mixlib-archive)
 
 A very simple gem to extract archives.
 
@@ -13,11 +13,15 @@ gem 'mixlib-archive'
 
 And then execute:
 
-    $ bundle
+```shell
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install mixlib-archive
+```shell
+$ gem install mixlib-archive
+```
 
 ## Usage
 
@@ -47,4 +51,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/chef/m
 ## License
 
 The gem is available as open source under the terms of the Apache License, v2
-
