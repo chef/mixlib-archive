@@ -18,6 +18,7 @@ begin
 rescue LoadError
   puts "chefstyle/rubocop is not available.  gem install chefstyle to do style checking."
 end
+
 begin
   require "github_changelog_generator/task"
 
