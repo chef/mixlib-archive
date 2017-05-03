@@ -1,12 +1,25 @@
+sudo: false
+language: ruby
+cache: bundler
+
+matrix:
+  include:
+    - rvm: 2.3.4
+    - rvm: 2.4.1
+    - rvm: ruby-head
+  allow_failures:
+    - rvm: ruby-head
 branches:
   only:
-    master
+  - master
 
-language: ruby
-rvm:
-  - 2.1
-  - 2.2
-  - 2.3.1
-before_install: gem install bundler -v 1.11.2
-script: bundle exec rake ci
 bundler_args: --without changelog
+
+before_install:
+  - gem install bundler
+  - bundle --version
+  - gem update --system
+  - gem --version
+
+script:
+  - bundle exec rake ci
