@@ -4,8 +4,9 @@ cache: bundler
 
 matrix:
   include:
-    - rvm: 2.3.4
-    - rvm: 2.4.1
+    - rvm: 2.3.6
+    - rvm: 2.4.3
+    - rvm: 2.5.0
     - rvm: ruby-head
   allow_failures:
     - rvm: ruby-head
