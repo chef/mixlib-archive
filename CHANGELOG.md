@@ -1,12 +1,21 @@
+<!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
+<!-- latest_release 0.4.1 -->
+<!-- latest_release -->
+
+<!-- release_rollup since=0.4.1 -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [v0.4.1](https://github.com/chef/mixlib-archive/tree/v0.4.1) (2017-02-02)
 
 [Full Changelog](https://github.com/chef/mixlib-archive/compare/v0.4.0...v0.4.1)
 
-**Merged pull requests:**
+###Merged pull requests:
 
 - Accept a single pattern to ignore [\#8](https://github.com/chef/mixlib-archive/pull/8) ([thommay](https://github.com/thommay))
+<!-- latest_stable_release -->
 
 ## [v0.4.0](https://github.com/chef/mixlib-archive/tree/v0.4.0) (2017-02-02)
 [Full Changelog](https://github.com/chef/mixlib-archive/compare/v0.3.0...v0.4.0)
