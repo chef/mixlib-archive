@@ -1,4 +1,5 @@
 # Mixlib::Archive
+
 [![Build Status Master](https://travis-ci.org/chef/mixlib-archive.svg?branch=master)](https://travis-ci.org/chef/mixlib-archive) [![Gem Version](https://badge.fury.io/rb/mixlib-archive.svg)](https://badge.fury.io/rb/mixlib-archive)
 
 A very simple gem to extract archives.
@@ -29,7 +30,7 @@ To extract an archive
 
 ```ruby
 require "mixlib/archive"
-tar = Mixlib::Artifact.new("/path/to/tar")
+tar = Mixlib::Archive.new("/path/to/tar")
 tar.extract("/destination/directory")
 ```
 
@@ -37,7 +38,7 @@ To create an archive
 
 ```ruby
 require "mixlib/archive"
-tar = Mixlib::Artifact.new("/path/to/foo.tar.gz")
+tar = Mixlib::Archive.new("/path/to/foo.tar.gz")
 tar.create(%w{ file.rb file2.rb }, gzip: true)
 ```
 
@@ -47,8 +48,7 @@ After checking out the repo, run `bundle` to install dependencies. Then, run `bu
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/chef/mixlib-archive. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Community Guidelines](https://docs.chef.io/community_guidelines.html) code of conduct.
-
+Bug reports and pull requests are welcome on GitHub at <https://github.com/chef/mixlib-archive>. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Community Guidelines](https://docs.chef.io/community_guidelines.html) code of conduct.
 
 ## License
 
