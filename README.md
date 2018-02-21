@@ -28,6 +28,7 @@ $ gem install mixlib-archive
 To extract an archive
 
 ```ruby
+require "mixlib/archive"
 tar = Mixlib::Artifact.new("/path/to/tar")
 tar.extract("/destination/directory")
 ```
@@ -35,6 +36,7 @@ tar.extract("/destination/directory")
 To create an archive
 
 ```ruby
+require "mixlib/archive"
 tar = Mixlib::Artifact.new("/path/to/foo.tar.gz")
 tar.create(%w{ file.rb file2.rb }, gzip: true)
 ```
