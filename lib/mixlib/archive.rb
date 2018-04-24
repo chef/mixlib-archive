@@ -11,8 +11,14 @@ module Mixlib
       @empty = empty
 
       archive = File.expand_path(archive)
-      # for now we only support Tar format archives.
-      @archiver = Mixlib::Archive::Tar.new(archive)
+      begin
+        # we prefer to use libarchive, which supports a great big pile o' stuff
+        require "mixlib/archive/lib_archive"
+        @archiver = Mixlib::Archive::LibArchive.new(archive)
+      rescue LoadError
+        # but if we can't use that, we'll fall back to ruby's native tar implementation
+        @archiver = Mixlib::Archive::Tar.new(archive)
+      end
     end
 
     class Log
