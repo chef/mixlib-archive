@@ -1,21 +1,19 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 0.4.2 -->
+<!-- latest_release -->
+<!-- latest_release -->
+
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [v0.4.2](https://github.com/chef/mixlib-archive/tree/v0.4.2) (2018-04-25)
 
 #### Merged Pull Requests
 - use libarchive by preference [#17](https://github.com/chef/mixlib-archive/pull/17) ([thommay](https://github.com/thommay))
-<!-- latest_release -->
-
-<!-- release_rollup since=0.4.1 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- use libarchive by preference [#17](https://github.com/chef/mixlib-archive/pull/17) ([thommay](https://github.com/thommay)) <!-- 0.4.2 -->
-<!-- release_rollup -->
-
 <!-- latest_stable_release -->
+
 ## [v0.4.1](https://github.com/chef/mixlib-archive/tree/v0.4.1) (2017-02-02)
 
 [Full Changelog](https://github.com/chef/mixlib-archive/compare/v0.4.0...v0.4.1)
@@ -23,7 +21,6 @@
 ###Merged pull requests:
 
 - Accept a single pattern to ignore [\#8](https://github.com/chef/mixlib-archive/pull/8) ([thommay](https://github.com/thommay))
-<!-- latest_stable_release -->
 
 ## [v0.4.0](https://github.com/chef/mixlib-archive/tree/v0.4.0) (2017-02-02)
 [Full Changelog](https://github.com/chef/mixlib-archive/compare/v0.3.0...v0.4.0)
