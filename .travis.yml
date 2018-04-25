@@ -2,11 +2,15 @@ sudo: false
 language: ruby
 cache: bundler
 
+addons:
+  apt:
+    packages:
+      - libarchive-dev
+
 matrix:
   include:
-    - rvm: 2.3.6
-    - rvm: 2.4.3
-    - rvm: 2.5.0
+    - rvm: 2.4.4
+    - rvm: 2.5.1
     - rvm: ruby-head
   allow_failures:
     - rvm: ruby-head

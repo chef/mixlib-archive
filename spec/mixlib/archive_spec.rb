@@ -2,15 +2,17 @@ require "spec_helper"
 
 describe Mixlib::Archive do
   let(:target) { "../fixtures/foo.tar" }
-  let (:destination) { Dir.mktmpdir }
-  let (:files) { %w{ file dir/file new_file.rb } }
+  let(:destination) { ::Dir.mktmpdir }
+  let(:files) { %w{ file dir/file new_file.rb } }
 
-  let (:archive) { described_class.new(target) }
-  let (:archiver) { double(Mixlib::Archive::Tar, extract: true) }
+  let(:archive) { described_class.new(target) }
+  let(:tar_archiver) { double(Mixlib::Archive::Tar, extract: true) }
+  let(:archiver) { double(Mixlib::Archive::LibArchive, extract: true) }
 
   before do
     allow(File).to receive(:expand_path).and_call_original
     allow(Mixlib::Archive::Tar).to receive(:new).with(any_args).and_return(archiver)
+    allow(Mixlib::Archive::LibArchive).to receive(:new).with(any_args).and_return(archiver)
   end
 
   after do
@@ -31,11 +33,12 @@ describe Mixlib::Archive do
       before do
       end
 
-      it "with the correct archiver" do
+      it "with the default archiver" do
         expect(File).to receive(:expand_path).with(target).and_return(expanded_target)
-        expect(Mixlib::Archive::Tar).to receive(:new).with(expanded_target)
+        expect(Mixlib::Archive::LibArchive).to receive(:new).with(expanded_target)
         described_class.new(target)
       end
+
     end
   end
 

@@ -119,11 +119,11 @@ module Mixlib
       ensure
         if file
           file.close unless file.closed?
-          file = nil
+          file = nil # rubocop:disable Lint/UselessAssignment
         end
         if raw
           raw.close unless raw.closed?
-          raw = nil
+          raw = nil # rubocop:disable Lint/UselessAssignment
         end
       end
 
