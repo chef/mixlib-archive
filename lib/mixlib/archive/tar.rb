@@ -1,4 +1,5 @@
 require "rubygems/package"
+require "tempfile"
 require "zlib"
 
 module Mixlib
@@ -85,10 +86,14 @@ module Mixlib
 
         target.close
         if gzip
-          Zlib::GzipWriter.open(archive) do |gz|
+          Zlib::GzipWriter.open(archive, Zlib::BEST_COMPRESSION) do |gz|
             gz.mtime = File.mtime(target.path)
             gz.orig_name = File.basename(archive)
-            gz.write IO.binread(target.path)
+            File.open(target.path) do |file|
+              while (chunk = file.read(16 * 1024))
+                gz.write(chunk)
+              end
+            end
           end
         else
           FileUtils.mv(target.path, archive)

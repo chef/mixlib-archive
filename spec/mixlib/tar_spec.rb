@@ -56,4 +56,21 @@ describe Mixlib::Archive::Tar do
     end
 
   end
+
+  describe "#create" do
+    let(:test_root) { Dir.mktmpdir(nil) }
+    let(:archive_path) { File.join(test_root, "test.tar.gz") }
+    let(:file_paths) { %w{ . .. fixture_a fixture_b fixture_c } }
+
+    it "creates a tarball" do
+      Dir.chdir(fixtures_path) do
+        Mixlib::Archive::Tar.new(archive_path).create(file_paths, gzip: true)
+      end
+      expect(File.file?(archive_path)).to be true
+      target = File.join(test_root, "target")
+      Mixlib::Archive::LibArchive.new(archive_path).extract(target, ignore: %w{ . .. })
+      expect(Dir.entries(target)).to match_array file_paths
+    end
+
+  end
 end
