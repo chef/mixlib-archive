@@ -1,11 +1,17 @@
 require "mixlib/archive/tar"
 require "mixlib/archive/version"
 require "mixlib/log"
+require "find"
 
 module Mixlib
   class Archive
     attr_reader :archiver
     alias_method :extractor, :archiver
+
+    def self.archive_directory(path, archive, gzip: false, format: :tar, compression: :none)
+      targets = Find.find(path).collect { |fn| fn }
+      new(archive).create(targets, gzip: gzip)
+    end
 
     def initialize(archive, empty: false)
       @empty = empty

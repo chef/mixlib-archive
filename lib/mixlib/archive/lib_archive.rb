@@ -19,6 +19,7 @@ module Mixlib
       def extract(destination, perms: true, ignore: [])
         ignore_re = Regexp.union(ignore)
         flags = perms ? ::Archive::EXTRACT_PERM : nil
+        FileUtils.mkdir_p(destination)
         Dir.chdir(destination) do
           reader = ::Archive::Reader.open_filename(@archive)
 
@@ -47,15 +48,36 @@ module Mixlib
         ::Archive.write_open_filename(archive, compression, format) do |tar|
           files.each do |fn|
             tar.new_entry do |entry|
+              content = nil
               entry.pathname = fn
-              entry.copy_stat(fn)
-              tar.write_header(entry)
+              stat = File.lstat(fn)
               if File.file?(fn)
                 content = File.read(fn)
-                tar.write_data(content)
+                entry.size = content.size
               end
+              entry.mode = stat.mode
+              entry.filetype = resolve_type(stat.ftype)
+              entry.atime = stat.atime
+              entry.mtime = stat.mtime
+              entry.symlink = File.readlink(fn) if File.symlink?(fn)
+              tar.write_header(entry)
+
+              tar.write_data(content) unless content.nil?
             end
           end
+        end
+      end
+
+      def resolve_type(type)
+        case type
+        when "characterSpecial"
+          ::Archive::Entry::CHARACTER_SPECIAL
+        when "blockSpecial"
+          ::Archive::Entry::BLOCK_SPECIAL
+        when "link"
+          ::Archive::Entry::SYMBOLIC_LINK
+        else
+          ::Archive::Entry.const_get(type.upcase)
         end
       end
     end
