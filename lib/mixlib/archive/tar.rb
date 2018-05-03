@@ -34,7 +34,7 @@ module Mixlib
               Mixlib::Archive::Log.warn "ignoring entry #{entry.full_name}"
               next
             end
-            dest ||= File.join(destination, entry.full_name)
+            dest ||= File.expand_path(File.join(destination, entry.full_name))
             parent = File.dirname(dest)
             FileUtils.mkdir_p(parent)
 
@@ -76,11 +76,18 @@ module Mixlib
         Gem::Package::TarWriter.new(target) do |tar|
           files.each do |fn|
             mode = File.stat(fn).mode
-            file = File.open(fn, "rb")
-            tar.add_file(fn, mode) do |io|
-              io.write(file)
+            if File.symlink?(fn)
+              target = File.readlink(fn)
+              tar.add_symlink(fn, target, mode)
+            elsif File.directory?(fn)
+              tar.mkdir(fn, mode)
+            elsif File.file?(fn)
+              file = File.open(fn, "rb")
+              tar.add_file(fn, mode) do |io|
+                io.write(file.read)
+              end
+              file.close
             end
-            file.close
           end
         end
 
@@ -110,6 +117,14 @@ module Mixlib
         IO.binread(path, 2) == [0x1F, 0x8B].pack("C*")
       end
 
+      # tar's magic is at byte 257 and is "ustar\0"
+      def is_tar_archive?(io)
+        io.rewind
+        magic = io.read[257..262]
+        io.rewind
+        magic == "ustar\0"
+      end
+
       def reader(&block)
         raw = File.open(archive, "rb")
 
@@ -119,6 +134,8 @@ module Mixlib
                else
                  raw
                end
+
+        raise Mixlib::Archive::TarError, "Unrecognized archive format" unless is_tar_archive?(file)
 
         Gem::Package::TarReader.new(file, &block)
       ensure
