@@ -122,21 +122,21 @@ module Mixlib
       def is_tar_archive?(io)
         if read_tar_magic(io) == "ustar\0"
           true
-        elsif read_tar_magic(io,'old') == "ustar  \0"
+        elsif read_tar_magic(io, "old") == "ustar  \0"
           true
         else
           false
         end
       end
 
-      def read_tar_magic(io,type=nil)
+      def read_tar_magic(io, type = nil)
         io.rewind
         magic = case type
-        when 'old'
-          io.read[257..264]
-        else
-          io.read[257..262]
-        end
+                when "old"
+                  io.read[257..264]
+                else
+                  io.read[257..262]
+                end
         io.rewind
         magic
       end

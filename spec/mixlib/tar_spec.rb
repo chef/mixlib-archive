@@ -77,26 +77,27 @@ describe Mixlib::Archive::Tar do
 
   describe "#is_tar_archive?" do
     let(:raw) { double(IO, closed?: true, rewind: 0, read: data) }
-    context 'oldgnu style header' do
-      let(:data) { "testdir/#{249.times.map{"\x00"}.join}ustar  \x00"}
-      it 'identifies an oldgnu style tar header' do
+    context "oldgnu style header" do
+      let(:data) { "testdir/#{Array.new(249) { "\x00" }.join}ustar  \x00" }
+      it "identifies an oldgnu style tar header" do
         extractor = described_class.new(tgz_archive)
         expect(extractor.send(:is_tar_archive?, raw)).to eq(true)
       end
     end
-    context 'gnu style header' do
-      let(:data) { "testdir/#{249.times.map{"\x00"}.join}ustar\x00"}
-      it 'identifies an gnu style tar header' do
+    context "gnu style header" do
+      let(:data) { "testdir/#{Array.new(249) { "\x00" }.join}ustar\x00" }
+      it "identifies an gnu style tar header" do
         extractor = described_class.new(tgz_archive)
         expect(extractor.send(:is_tar_archive?, raw)).to eq(true)
       end
     end
-    context 'invalid header' do
-      let(:data) { "testdir/#{249.times.map{"\x00"}.join}notavalidheader"}
-      it 'does not identify an inalid header' do
+    context "invalid header" do
+      let(:data) { "testdir/#{Array.new(249) { "\x00" }.join}notavalidheader" }
+      it "does not identify an inalid header" do
         extractor = described_class.new(tgz_archive)
         expect(extractor.send(:is_tar_archive?, raw)).to eq(false)
       end
     end
   end
+
 end
