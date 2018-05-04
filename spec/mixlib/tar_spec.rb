@@ -20,10 +20,11 @@ describe Mixlib::Archive::Tar do
   end
 
   describe "#reader" do
-    let(:raw) { double(File, closed?: true) }
+    let(:raw) { double(IO, closed?: true, rewind: 0) }
 
     before do
       allow(Gem::Package::TarReader).to receive(:new).with(raw, &extraction).and_return(true)
+      allow_any_instance_of(Mixlib::Archive::Tar).to receive(:is_tar_archive?).and_return(true)
     end
 
     context "with a gzipped file" do

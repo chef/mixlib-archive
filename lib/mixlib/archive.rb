@@ -5,6 +5,8 @@ require "find"
 
 module Mixlib
   class Archive
+    class TarError < StandardError; end
+
     attr_reader :archiver
     alias_method :extractor, :archiver
 
