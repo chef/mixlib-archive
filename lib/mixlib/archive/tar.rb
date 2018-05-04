@@ -118,11 +118,27 @@ module Mixlib
       end
 
       # tar's magic is at byte 257 and is "ustar\0"
+      # OLDGNU_MAGIC "ustar  "  /* 7 chars and a null */
       def is_tar_archive?(io)
+        if read_tar_magic(io) == "ustar\0"
+          true
+        elsif read_tar_magic(io,'old') == "ustar  \0"
+          true
+        else
+          false
+        end
+      end
+
+      def read_tar_magic(io,type=nil)
         io.rewind
-        magic = io.read[257..262]
+        magic = case type
+        when 'old'
+          io.read[257..264]
+        else
+          io.read[257..262]
+        end
         io.rewind
-        magic == "ustar\0"
+        magic
       end
 
       def reader(&block)
