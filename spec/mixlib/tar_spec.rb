@@ -93,7 +93,7 @@ describe Mixlib::Archive::Tar do
     end
     context "invalid header" do
       let(:data) { "testdir/#{Array.new(249) { "\x00" }.join}notavalidheader" }
-      it "does not identify an inalid header" do
+      it "does not identify an invalid header" do
         extractor = described_class.new(tgz_archive)
         expect(extractor.send(:is_tar_archive?, raw)).to eq(false)
       end
