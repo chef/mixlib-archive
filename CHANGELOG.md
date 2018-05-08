@@ -1,27 +1,24 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 0.4.6 -->
+<!-- latest_release -->
+<!-- latest_release -->
+
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [v0.4.6](https://github.com/chef/mixlib-archive/tree/v0.4.6) (2018-05-08)
 
 #### Merged Pull Requests
 - update tar magic to identify oldgnu style tar headers [#21](https://github.com/chef/mixlib-archive/pull/21) ([spion06](https://github.com/spion06))
-<!-- latest_release -->
-
-<!-- release_rollup since=0.4.5 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- update tar magic to identify oldgnu style tar headers [#21](https://github.com/chef/mixlib-archive/pull/21) ([spion06](https://github.com/spion06)) <!-- 0.4.6 -->
-<!-- release_rollup -->
-
 <!-- latest_stable_release -->
+
 ## [v0.4.5](https://github.com/chef/mixlib-archive/tree/v0.4.5) (2018-05-04)
 
 #### Merged Pull Requests
 - Fix up creating archives [#18](https://github.com/chef/mixlib-archive/pull/18) ([thommay](https://github.com/thommay))
 - Fix up writing tar archives with the rubygems tar [#19](https://github.com/chef/mixlib-archive/pull/19) ([thommay](https://github.com/thommay))
-<!-- latest_stable_release -->
 
 ## [v0.4.2](https://github.com/chef/mixlib-archive/tree/v0.4.2) (2018-04-25)
 
