@@ -125,7 +125,7 @@ module Mixlib
 
       def read_tar_magic(io)
         io.rewind
-        magic = io.read[257..264]
+        magic = io.read(512)[257..264]
         io.rewind
         magic
       end
