@@ -1,10 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release -->
+<!-- latest_release 0.4.7 -->
+## [v0.4.7](https://github.com/chef/mixlib-archive/tree/v0.4.7) (2018-05-14)
+
+#### Merged Pull Requests
+- fixup strange edge case around tar magic reading [#22](https://github.com/chef/mixlib-archive/pull/22) ([spion06](https://github.com/spion06))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=0.4.6 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- fixup strange edge case around tar magic reading [#22](https://github.com/chef/mixlib-archive/pull/22) ([spion06](https://github.com/spion06)) <!-- 0.4.7 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
