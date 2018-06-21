@@ -1,26 +1,23 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 0.4.8 -->
+<!-- latest_release -->
+<!-- latest_release -->
+
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [v0.4.8](https://github.com/chef/mixlib-archive/tree/v0.4.8) (2018-06-21)
 
 #### Merged Pull Requests
 - Use the correct entry size for content with multi-byte characters. [#23](https://github.com/chef/mixlib-archive/pull/23) ([coderanger](https://github.com/coderanger))
-<!-- latest_release -->
-
-<!-- release_rollup since=0.4.7 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Use the correct entry size for content with multi-byte characters. [#23](https://github.com/chef/mixlib-archive/pull/23) ([coderanger](https://github.com/coderanger)) <!-- 0.4.8 -->
-<!-- release_rollup -->
-
 <!-- latest_stable_release -->
+
 ## [v0.4.7](https://github.com/chef/mixlib-archive/tree/v0.4.7) (2018-06-07)
 
 #### Merged Pull Requests
 - fixup strange edge case around tar magic reading [#22](https://github.com/chef/mixlib-archive/pull/22) ([spion06](https://github.com/spion06))
-<!-- latest_stable_release -->
 
 ## [v0.4.6](https://github.com/chef/mixlib-archive/tree/v0.4.6) (2018-05-08)
 
