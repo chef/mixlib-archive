@@ -53,7 +53,7 @@ module Mixlib
               stat = File.lstat(fn)
               if File.file?(fn)
                 content = File.read(fn)
-                entry.size = content.size
+                entry.size = content.bytesize
               end
               entry.mode = stat.mode
               entry.filetype = resolve_type(stat.ftype)
