@@ -5,7 +5,7 @@ require "zlib"
 module Mixlib
   class Archive
     class Tar
-      TAR_LONGLINK = "././@LongLink"
+      TAR_LONGLINK = "././@LongLink".freeze
 
       attr_reader :options
       attr_reader :archive
