@@ -1,13 +1,14 @@
 require "bundler/gem_tasks"
 require "rspec/core/rake_task"
-require "mixlib/archive/version"
 
-RSpec::Core::RakeTask.new(:spec)
+task default: [:style, :spec]
 
-task :default => :spec
+Bundler::GemHelper.install_tasks
 
-desc "Run tests for Travis CI"
-task ci: [:style, :spec]
+desc "Run specs"
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = "spec/**/*_spec.rb"
+end
 
 begin
   require "chefstyle"
@@ -16,16 +17,20 @@ begin
     task.options += ["--display-cop-names", "--no-color"]
   end
 rescue LoadError
-  puts "chefstyle/rubocop is not available.  gem install chefstyle to do style checking."
+  puts "chefstyle/rubocop is not available. bundle install first to make sure all dependencies are installed."
 end
 
 begin
-  require "github_changelog_generator/task"
-
-  GitHubChangelogGenerator::RakeTask.new :changelog do |config|
-    config.issues = false
-    config.future_release = Mixlib::Archive::VERSION
-  end
+  require "yard"
+  YARD::Rake::YardocTask.new(:docs)
 rescue LoadError
-  puts "github_changelog_generator is not available. gem install github_changelog_generator to generate changelogs"
+  puts "yard is not available. bundle install first to make sure all dependencies are installed."
+end
+
+task :console do
+  require "irb"
+  require "irb/completion"
+  require "mixlib/archive"
+  ARGV.clear
+  IRB.start
 end
