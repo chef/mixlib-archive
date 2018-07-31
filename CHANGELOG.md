@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 0.4.10 -->
-## [v0.4.10](https://github.com/chef/mixlib-archive/tree/v0.4.10) (2018-07-27)
+<!-- latest_release 0.4.11 -->
+## [v0.4.11](https://github.com/chef/mixlib-archive/tree/v0.4.11) (2018-07-31)
 
 #### Merged Pull Requests
-- Move deps to the Gemfile and expand Rake tasks [#25](https://github.com/chef/mixlib-archive/pull/25) ([tas50](https://github.com/tas50))
+- Add github issue template &amp; standardize expeditor config [#26](https://github.com/chef/mixlib-archive/pull/26) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
 <!-- release_rollup since=0.4.8 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add github issue template &amp; standardize expeditor config [#26](https://github.com/chef/mixlib-archive/pull/26) ([tas50](https://github.com/tas50)) <!-- 0.4.11 -->
 - Move deps to the Gemfile and expand Rake tasks [#25](https://github.com/chef/mixlib-archive/pull/25) ([tas50](https://github.com/tas50)) <!-- 0.4.10 -->
 - add codeowners [#24](https://github.com/chef/mixlib-archive/pull/24) ([thommay](https://github.com/thommay)) <!-- 0.4.9 -->
 <!-- release_rollup -->
