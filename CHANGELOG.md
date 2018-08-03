@@ -1,30 +1,27 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 0.4.13 -->
-## [v0.4.13](https://github.com/chef/mixlib-archive/tree/v0.4.13) (2018-08-03)
-
-#### Merged Pull Requests
-- bugfix to make dir.chdir threadsafe [#29](https://github.com/chef/mixlib-archive/pull/29) ([stevenoneill](https://github.com/stevenoneill))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=0.4.8 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- bugfix to make dir.chdir threadsafe [#29](https://github.com/chef/mixlib-archive/pull/29) ([stevenoneill](https://github.com/stevenoneill)) <!-- 0.4.13 -->
-- Update codeowners and add PR template [#27](https://github.com/chef/mixlib-archive/pull/27) ([tas50](https://github.com/tas50)) <!-- 0.4.12 -->
-- Add github issue template &amp; standardize expeditor config [#26](https://github.com/chef/mixlib-archive/pull/26) ([tas50](https://github.com/tas50)) <!-- 0.4.11 -->
-- Move deps to the Gemfile and expand Rake tasks [#25](https://github.com/chef/mixlib-archive/pull/25) ([tas50](https://github.com/tas50)) <!-- 0.4.10 -->
-- add codeowners [#24](https://github.com/chef/mixlib-archive/pull/24) ([thommay](https://github.com/thommay)) <!-- 0.4.9 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v0.4.13](https://github.com/chef/mixlib-archive/tree/v0.4.13) (2018-08-03)
+
+#### Merged Pull Requests
+- add codeowners [#24](https://github.com/chef/mixlib-archive/pull/24) ([thommay](https://github.com/thommay))
+- Move deps to the Gemfile and expand Rake tasks [#25](https://github.com/chef/mixlib-archive/pull/25) ([tas50](https://github.com/tas50))
+- Add github issue template &amp; standardize expeditor config [#26](https://github.com/chef/mixlib-archive/pull/26) ([tas50](https://github.com/tas50))
+- Update codeowners and add PR template [#27](https://github.com/chef/mixlib-archive/pull/27) ([tas50](https://github.com/tas50))
+- bugfix to make dir.chdir threadsafe [#29](https://github.com/chef/mixlib-archive/pull/29) ([stevenoneill](https://github.com/stevenoneill))
+<!-- latest_stable_release -->
+
 ## [v0.4.8](https://github.com/chef/mixlib-archive/tree/v0.4.8) (2018-06-21)
 
 #### Merged Pull Requests
 - Use the correct entry size for content with multi-byte characters. [#23](https://github.com/chef/mixlib-archive/pull/23) ([coderanger](https://github.com/coderanger))
-<!-- latest_stable_release -->
 
 ## [v0.4.7](https://github.com/chef/mixlib-archive/tree/v0.4.7) (2018-06-07)
 
