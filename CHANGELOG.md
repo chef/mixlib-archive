@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 0.4.12 -->
-## [v0.4.12](https://github.com/chef/mixlib-archive/tree/v0.4.12) (2018-08-01)
+<!-- latest_release 0.4.13 -->
+## [v0.4.13](https://github.com/chef/mixlib-archive/tree/v0.4.13) (2018-08-03)
 
 #### Merged Pull Requests
-- Update codeowners and add PR template [#27](https://github.com/chef/mixlib-archive/pull/27) ([tas50](https://github.com/tas50))
+- bugfix to make dir.chdir threadsafe [#29](https://github.com/chef/mixlib-archive/pull/29) ([stevenoneill](https://github.com/stevenoneill))
 <!-- latest_release -->
 
 <!-- release_rollup since=0.4.8 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- bugfix to make dir.chdir threadsafe [#29](https://github.com/chef/mixlib-archive/pull/29) ([stevenoneill](https://github.com/stevenoneill)) <!-- 0.4.13 -->
 - Update codeowners and add PR template [#27](https://github.com/chef/mixlib-archive/pull/27) ([tas50](https://github.com/tas50)) <!-- 0.4.12 -->
 - Add github issue template &amp; standardize expeditor config [#26](https://github.com/chef/mixlib-archive/pull/26) ([tas50](https://github.com/tas50)) <!-- 0.4.11 -->
 - Move deps to the Gemfile and expand Rake tasks [#25](https://github.com/chef/mixlib-archive/pull/25) ([tas50](https://github.com/tas50)) <!-- 0.4.10 -->
