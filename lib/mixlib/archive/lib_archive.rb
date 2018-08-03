@@ -6,6 +6,12 @@ module Mixlib
       attr_reader :options
       attr_reader :archive
 
+      class << self
+        attr_accessor :mutex_chdir
+      end
+
+      Mixlib::Archive::LibArchive.mutex_chdir = Mutex.new
+
       def initialize(archive, options = {})
         @archive = archive
         @options = options
@@ -20,18 +26,24 @@ module Mixlib
         ignore_re = Regexp.union(ignore)
         flags = perms ? ::Archive::EXTRACT_PERM : nil
         FileUtils.mkdir_p(destination)
-        Dir.chdir(destination) do
-          reader = ::Archive::Reader.open_filename(@archive)
 
-          reader.each_entry do |entry|
-            if entry.pathname =~ ignore_re
-              Mixlib::Archive::Log.warn "ignoring entry #{entry.pathname}"
-              next
+        # @note Dir.chdir is applied to the process, thus it is not thread-safe
+        # and must be synchronized.
+        # TODO: figure out a better alternative to chdir
+        Mixlib::Archive::LibArchive.mutex_chdir.synchronize do
+          Dir.chdir(destination) do
+            reader = ::Archive::Reader.open_filename(@archive)
+
+            reader.each_entry do |entry|
+              if entry.pathname =~ ignore_re
+                Mixlib::Archive::Log.warn "ignoring entry #{entry.pathname}"
+                next
+              end
+
+              reader.extract(entry, flags.to_i)
             end
-
-            reader.extract(entry, flags.to_i)
+            reader.close
           end
-          reader.close
         end
       end
 
