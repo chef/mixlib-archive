@@ -1,23 +1,21 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 0.4.16 -->
-## [v0.4.16](https://github.com/chef/mixlib-archive/tree/v0.4.16) (2018-08-28)
-
-#### Merged Pull Requests
-- Fix read_tar_magic to properly return an array when a file has less than 264 characters [#30](https://github.com/chef/mixlib-archive/pull/30) ([bdwyertech](https://github.com/bdwyertech))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=0.4.13 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Fix read_tar_magic to properly return an array when a file has less than 264 characters [#30](https://github.com/chef/mixlib-archive/pull/30) ([bdwyertech](https://github.com/bdwyertech)) <!-- 0.4.16 -->
-- Fix mixlib-archive on Windows, add Appveyor [#31](https://github.com/chef/mixlib-archive/pull/31) ([stuartpreston](https://github.com/stuartpreston)) <!-- 0.4.15 -->
-- Ensure that paths like foo..bar.baz aren&#39;t ignored [#9](https://github.com/chef/mixlib-archive/pull/9) ([thommay](https://github.com/thommay)) <!-- 0.4.14 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v0.4.16](https://github.com/chef/mixlib-archive/tree/v0.4.16) (2018-08-28)
+
+#### Merged Pull Requests
+- Ensure that paths like foo..bar.baz aren&#39;t ignored [#9](https://github.com/chef/mixlib-archive/pull/9) ([thommay](https://github.com/thommay))
+- Fix mixlib-archive on Windows, add Appveyor [#31](https://github.com/chef/mixlib-archive/pull/31) ([stuartpreston](https://github.com/stuartpreston))
+- Fix read_tar_magic to properly return an array when a file has less than 264 characters [#30](https://github.com/chef/mixlib-archive/pull/30) ([bdwyertech](https://github.com/bdwyertech))
+<!-- latest_stable_release -->
+
 ## [v0.4.13](https://github.com/chef/mixlib-archive/tree/v0.4.13) (2018-08-03)
 
 #### Merged Pull Requests
@@ -26,7 +24,6 @@
 - Add github issue template &amp; standardize expeditor config [#26](https://github.com/chef/mixlib-archive/pull/26) ([tas50](https://github.com/tas50))
 - Update codeowners and add PR template [#27](https://github.com/chef/mixlib-archive/pull/27) ([tas50](https://github.com/tas50))
 - bugfix to make dir.chdir threadsafe [#29](https://github.com/chef/mixlib-archive/pull/29) ([stevenoneill](https://github.com/stevenoneill))
-<!-- latest_stable_release -->
 
 ## [v0.4.8](https://github.com/chef/mixlib-archive/tree/v0.4.8) (2018-06-21)
 
