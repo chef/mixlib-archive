@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 0.4.14 -->
-## [v0.4.14](https://github.com/chef/mixlib-archive/tree/v0.4.14) (2018-08-03)
+<!-- latest_release 0.4.15 -->
+## [v0.4.15](https://github.com/chef/mixlib-archive/tree/v0.4.15) (2018-08-28)
 
 #### Merged Pull Requests
-- Ensure that paths like foo..bar.baz aren&#39;t ignored [#9](https://github.com/chef/mixlib-archive/pull/9) ([thommay](https://github.com/thommay))
+- Fix mixlib-archive on Windows, add Appveyor [#31](https://github.com/chef/mixlib-archive/pull/31) ([stuartpreston](https://github.com/stuartpreston))
 <!-- latest_release -->
 
 <!-- release_rollup since=0.4.13 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Fix mixlib-archive on Windows, add Appveyor [#31](https://github.com/chef/mixlib-archive/pull/31) ([stuartpreston](https://github.com/stuartpreston)) <!-- 0.4.15 -->
 - Ensure that paths like foo..bar.baz aren&#39;t ignored [#9](https://github.com/chef/mixlib-archive/pull/9) ([thommay](https://github.com/thommay)) <!-- 0.4.14 -->
 <!-- release_rollup -->
 
