@@ -49,14 +49,8 @@ module Mixlib
 
     private
 
-    BACKSLASH = '\\'.freeze
-
     def path_separator
-      if Gem.win_platform?
-        File::ALT_SEPARATOR || BACKSLASH
-      else
-        File::SEPARATOR
-      end
+      File::SEPARATOR
     end
 
     def create_and_empty(destination)
