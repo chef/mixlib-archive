@@ -98,6 +98,13 @@ describe Mixlib::Archive::Tar do
         expect(extractor.send(:is_tar_archive?, raw)).to eq(false)
       end
     end
+    context "invalid small file" do
+      let(:data) { "testdir/#{Array.new(11) { "\x00" }.join}smallfile" }
+      it "does not identify an invalid header in a small file" do
+        extractor = described_class.new(tgz_archive)
+        expect(extractor.send(:is_tar_archive?, raw)).to eq(false)
+      end
+    end
   end
 
 end
