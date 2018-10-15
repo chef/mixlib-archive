@@ -1,29 +1,26 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 0.4.18 -->
-## [v0.4.18](https://github.com/chef/mixlib-archive/tree/v0.4.18) (2018-10-15)
-
-#### Merged Pull Requests
-- Add a mingw32 specific gemspec to limit files shipped on *nix [#33](https://github.com/chef/mixlib-archive/pull/33) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=0.4.16 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Add a mingw32 specific gemspec to limit files shipped on *nix [#33](https://github.com/chef/mixlib-archive/pull/33) ([tas50](https://github.com/tas50)) <!-- 0.4.18 -->
-- Misc tweaks to gemfile / gemspec [#32](https://github.com/chef/mixlib-archive/pull/32) ([tas50](https://github.com/tas50)) <!-- 0.4.17 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v0.4.18](https://github.com/chef/mixlib-archive/tree/v0.4.18) (2018-10-15)
+
+#### Merged Pull Requests
+- Misc tweaks to gemfile / gemspec [#32](https://github.com/chef/mixlib-archive/pull/32) ([tas50](https://github.com/tas50))
+- Add a mingw32 specific gemspec to limit files shipped on *nix [#33](https://github.com/chef/mixlib-archive/pull/33) ([tas50](https://github.com/tas50))
+<!-- latest_stable_release -->
+
 ## [v0.4.16](https://github.com/chef/mixlib-archive/tree/v0.4.16) (2018-08-28)
 
 #### Merged Pull Requests
 - Ensure that paths like foo..bar.baz aren&#39;t ignored [#9](https://github.com/chef/mixlib-archive/pull/9) ([thommay](https://github.com/thommay))
 - Fix mixlib-archive on Windows, add Appveyor [#31](https://github.com/chef/mixlib-archive/pull/31) ([stuartpreston](https://github.com/stuartpreston))
 - Fix read_tar_magic to properly return an array when a file has less than 264 characters [#30](https://github.com/chef/mixlib-archive/pull/30) ([bdwyertech](https://github.com/bdwyertech))
-<!-- latest_stable_release -->
 
 ## [v0.4.13](https://github.com/chef/mixlib-archive/tree/v0.4.13) (2018-08-03)
 
