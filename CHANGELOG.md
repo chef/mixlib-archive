@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 0.4.17 -->
-## [v0.4.17](https://github.com/chef/mixlib-archive/tree/v0.4.17) (2018-10-15)
+<!-- latest_release 0.4.18 -->
+## [v0.4.18](https://github.com/chef/mixlib-archive/tree/v0.4.18) (2018-10-15)
 
 #### Merged Pull Requests
-- Misc tweaks to gemfile / gemspec [#32](https://github.com/chef/mixlib-archive/pull/32) ([tas50](https://github.com/tas50))
+- Add a mingw32 specific gemspec to limit files shipped on *nix [#33](https://github.com/chef/mixlib-archive/pull/33) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
 <!-- release_rollup since=0.4.16 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add a mingw32 specific gemspec to limit files shipped on *nix [#33](https://github.com/chef/mixlib-archive/pull/33) ([tas50](https://github.com/tas50)) <!-- 0.4.18 -->
 - Misc tweaks to gemfile / gemspec [#32](https://github.com/chef/mixlib-archive/pull/32) ([tas50](https://github.com/tas50)) <!-- 0.4.17 -->
 <!-- release_rollup -->
 
