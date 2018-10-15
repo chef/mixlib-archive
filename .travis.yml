@@ -20,7 +20,7 @@ branches:
   only:
   - master
 
-bundler_args: --without docs development
+bundler_args: --without docs debug
 
 before_install:
   - gem install bundler
