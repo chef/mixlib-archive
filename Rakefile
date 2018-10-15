@@ -1,9 +1,9 @@
-require "bundler/gem_tasks"
+require "bundler"
 require "rspec/core/rake_task"
 
-task default: [:style, :spec]
+Bundler::GemHelper.install_tasks name: "mixlib-archive"
 
-Bundler::GemHelper.install_tasks
+task default: [:style, :spec]
 
 desc "Run specs"
 RSpec::Core::RakeTask.new(:spec) do |spec|
