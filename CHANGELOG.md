@@ -16,12 +16,14 @@
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v0.4.18](https://github.com/chef/mixlib-archive/tree/v0.4.18) (2018-12-12)
+<!-- latest_stable_release -->
+
 ## [v0.4.18](https://github.com/chef/mixlib-archive/tree/v0.4.18) (2018-10-15)
 
 #### Merged Pull Requests
 - Misc tweaks to gemfile / gemspec [#32](https://github.com/chef/mixlib-archive/pull/32) ([tas50](https://github.com/tas50))
 - Add a mingw32 specific gemspec to limit files shipped on *nix [#33](https://github.com/chef/mixlib-archive/pull/33) ([tas50](https://github.com/tas50))
-<!-- latest_stable_release -->
 
 ## [v0.4.16](https://github.com/chef/mixlib-archive/tree/v0.4.16) (2018-08-28)
 
