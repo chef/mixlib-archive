@@ -1,27 +1,24 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 0.4.19 -->
+<!-- latest_release -->
+<!-- latest_release -->
+
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [v0.4.19](https://github.com/chef/mixlib-archive/tree/v0.4.19) (2018-12-12)
 
 #### Merged Pull Requests
 - Don&#39;t ship the readme in the gem artifact [#35](https://github.com/chef/mixlib-archive/pull/35) ([tas50](https://github.com/tas50))
-<!-- latest_release -->
-
-<!-- release_rollup since=0.4.18 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Don&#39;t ship the readme in the gem artifact [#35](https://github.com/chef/mixlib-archive/pull/35) ([tas50](https://github.com/tas50)) <!-- 0.4.19 -->
-<!-- release_rollup -->
-
 <!-- latest_stable_release -->
+
 ## [v0.4.18](https://github.com/chef/mixlib-archive/tree/v0.4.18) (2018-10-15)
 
 #### Merged Pull Requests
 - Misc tweaks to gemfile / gemspec [#32](https://github.com/chef/mixlib-archive/pull/32) ([tas50](https://github.com/tas50))
 - Add a mingw32 specific gemspec to limit files shipped on *nix [#33](https://github.com/chef/mixlib-archive/pull/33) ([tas50](https://github.com/tas50))
-<!-- latest_stable_release -->
 
 ## [v0.4.16](https://github.com/chef/mixlib-archive/tree/v0.4.16) (2018-08-28)
 
