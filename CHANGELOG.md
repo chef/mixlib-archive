@@ -1,10 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release -->
+<!-- latest_release 0.4.19 -->
+## [v0.4.19](https://github.com/chef/mixlib-archive/tree/v0.4.19) (2018-12-12)
+
+#### Merged Pull Requests
+- Don&#39;t ship the readme in the gem artifact [#35](https://github.com/chef/mixlib-archive/pull/35) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=0.4.18 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Don&#39;t ship the readme in the gem artifact [#35](https://github.com/chef/mixlib-archive/pull/35) ([tas50](https://github.com/tas50)) <!-- 0.4.19 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
