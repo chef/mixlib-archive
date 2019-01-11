@@ -61,7 +61,7 @@ describe Mixlib::Archive::Tar do
   describe "#create" do
     let(:test_root) { Dir.mktmpdir(nil) }
     let(:archive_path) { File.join(test_root, "test.tar.gz") }
-    let(:file_paths) { %w{ . .. fixture_a fixture_b fixture_c } }
+    let(:file_paths) { %w{ . .. fixture_a fixture_b fixture_c fixture_binary } }
 
     it "creates a tarball" do
       Dir.chdir(fixtures_path) do
@@ -71,6 +71,7 @@ describe Mixlib::Archive::Tar do
       target = File.join(test_root, "target")
       Mixlib::Archive::LibArchive.new(archive_path).extract(target, ignore: %w{ . .. })
       expect(Dir.entries(target)).to match_array file_paths
+      expect(File.size("#{target}/fixture_binary")).to eql 6
     end
 
   end

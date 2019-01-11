@@ -3,6 +3,7 @@ require "tmpdir"
 require "mixlib/archive"
 require "mixlib/archive/tar"
 require "mixlib/archive/lib_archive"
+require "pathname"
 
 module Fixtures
   def fixtures_path
