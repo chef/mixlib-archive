@@ -1,10 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release -->
+<!-- latest_release 0.4.20 -->
+## [v0.4.20](https://github.com/chef/mixlib-archive/tree/v0.4.20) (2019-01-13)
+
+#### Merged Pull Requests
+- mixlib-archive-tar create corrupt archives on Windows [#37](https://github.com/chef/mixlib-archive/pull/37) ([kenmacleod](https://github.com/kenmacleod))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=0.4.19 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- mixlib-archive-tar create corrupt archives on Windows [#37](https://github.com/chef/mixlib-archive/pull/37) ([kenmacleod](https://github.com/kenmacleod)) <!-- 0.4.20 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
