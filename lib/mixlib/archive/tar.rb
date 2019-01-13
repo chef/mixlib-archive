@@ -72,6 +72,7 @@ module Mixlib
       def create(files, gzip: false)
         tgt_dir = File.dirname(archive)
         target = Tempfile.new(File.basename(archive), tgt_dir)
+        target.binmode
 
         Gem::Package::TarWriter.new(target) do |tar|
           files.each do |fn|
