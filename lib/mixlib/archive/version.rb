@@ -1,5 +1,5 @@
 module Mixlib
   class Archive
-    VERSION = "0.4.20".freeze
+    VERSION = "1.0.0".freeze
   end
 end

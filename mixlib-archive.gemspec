@@ -13,6 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/chef/mixlib-archive"
   spec.license       = "Apache-2.0"
+  spec.required_ruby_version = ">= 2.4"
 
   spec.files         = %w{LICENSE} + Dir.glob("lib/**/*")
   spec.require_paths = ["lib"]
