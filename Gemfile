@@ -5,15 +5,15 @@ gemspec name: "mixlib-archive"
 gem "ffi-libarchive"
 
 group :docs do
-  gem "yard"
-  gem "redcarpet"
   gem "github-markup"
+  gem "redcarpet"
+  gem "yard"
 end
 
 group :test do
   gem "chefstyle", git: "https://github.com/chef/chefstyle.git", branch: "master"
-  gem "rspec", "~> 3.0"
   gem "rake"
+  gem "rspec", "~> 3.0"
 end
 
 group :debug do
