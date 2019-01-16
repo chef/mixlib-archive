@@ -1,28 +1,24 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.0.1 -->
+<!-- latest_release -->
+<!-- latest_release -->
+
+<!-- release_rollup -->
+<!-- release_rollup -->
+
+<!-- latest_stable_release -->
 ## [v1.0.1](https://github.com/chef/mixlib-archive/tree/v1.0.1) (2019-01-16)
 
 #### Merged Pull Requests
 - Update expeditor config and order gemfile [#38](https://github.com/chef/mixlib-archive/pull/38) ([tas50](https://github.com/tas50))
-- Require Ruby 2.4+ and bump to version 1.0 [#36](https://github.com/chef/mixlib-archive/pull/36) ([lamont-granquist](https://github.com/lamont-granquist))
-<!-- latest_release -->
-
-<!-- release_rollup since=1.0.0 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Update expeditor config and order gemfile [#38](https://github.com/chef/mixlib-archive/pull/38) ([tas50](https://github.com/tas50)) <!-- 1.0.1 -->
-<!-- release_rollup -->
-
 <!-- latest_stable_release -->
+
 ## [v1.0.0](https://github.com/chef/mixlib-archive/tree/v1.0.0) (2019-01-16)
 
 #### Merged Pull Requests
 - mixlib-archive-tar create corrupt archives on Windows [#37](https://github.com/chef/mixlib-archive/pull/37) ([kenmacleod](https://github.com/kenmacleod))
 - Require Ruby 2.4+ and bump to version 1.0 [#36](https://github.com/chef/mixlib-archive/pull/36) ([lamont-granquist](https://github.com/lamont-granquist))
-<!-- latest_stable_release -->
 
 ## [v0.4.19](https://github.com/chef/mixlib-archive/tree/v0.4.19) (2018-12-12)
 
