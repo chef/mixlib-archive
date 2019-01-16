@@ -8,20 +8,22 @@
 - Require Ruby 2.4+ and bump to version 1.0 [#36](https://github.com/chef/mixlib-archive/pull/36) ([lamont-granquist](https://github.com/lamont-granquist))
 <!-- latest_release -->
 
-<!-- release_rollup since=0.4.19 -->
+<!-- release_rollup since=1.0.0 -->
 ### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Require Ruby 2.4+ and bump to version 1.0 [#36](https://github.com/chef/mixlib-archive/pull/36) ([lamont-granquist](https://github.com/lamont-granquist)) <!-- 1.0.0 -->
-- mixlib-archive-tar create corrupt archives on Windows [#37](https://github.com/chef/mixlib-archive/pull/37) ([kenmacleod](https://github.com/kenmacleod)) <!-- 0.4.20 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v1.0.0](https://github.com/chef/mixlib-archive/tree/v1.0.0) (2019-01-16)
+
+#### Merged Pull Requests
+- mixlib-archive-tar create corrupt archives on Windows [#37](https://github.com/chef/mixlib-archive/pull/37) ([kenmacleod](https://github.com/kenmacleod))
+- Require Ruby 2.4+ and bump to version 1.0 [#36](https://github.com/chef/mixlib-archive/pull/36) ([lamont-granquist](https://github.com/lamont-granquist))
+<!-- latest_stable_release -->
+
 ## [v0.4.19](https://github.com/chef/mixlib-archive/tree/v0.4.19) (2018-12-12)
 
 #### Merged Pull Requests
 - Don&#39;t ship the readme in the gem artifact [#35](https://github.com/chef/mixlib-archive/pull/35) ([tas50](https://github.com/tas50))
-<!-- latest_stable_release -->
 
 ## [v0.4.18](https://github.com/chef/mixlib-archive/tree/v0.4.18) (2018-10-15)
 
