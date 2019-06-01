@@ -1,6 +1,14 @@
 # Mixlib::Archive
 
-[![Build Status Master](https://travis-ci.org/chef/mixlib-archive.svg?branch=master)](https://travis-ci.org/chef/mixlib-archive) [![Gem Version](https://badge.fury.io/rb/mixlib-archive.svg)](https://badge.fury.io/rb/mixlib-archive)
+[![Gem Version](https://badge.fury.io/rb/mixlib-archive.svg)](https://badge.fury.io/rb/mixlib-archive)
+
+**Umbrella Project**: [Chef Foundation](https://github.com/chef/chef-oss-practices/blob/master/projects/chef-foundation.md)
+
+**Project State**: [Active](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md#active)
+
+**Issues [Response Time Maximum](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md)**: 14 days
+
+**Pull Request [Response Time Maximum](https://github.com/chef/chef-oss-practices/blob/master/repo-management/repo-states.md)**: 14 days
 
 A very simple gem to extract archives.
 
