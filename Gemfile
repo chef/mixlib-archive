@@ -11,7 +11,7 @@ group :docs do
 end
 
 group :test do
-  gem "chefstyle", git: "https://github.com/chef/chefstyle.git", branch: "master"
+  gem "chefstyle"
   gem "rake"
   gem "rspec", "~> 3.0"
 end
