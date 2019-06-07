@@ -33,13 +33,13 @@ install:
   - SET PATH=C:\Ruby%ruby_version%\bin;%PATH%
   - echo %PATH%
   - ruby --version
-  - gem --version
   - gem update --system
+  - gem --version
   - gem install bundler --quiet --no-document
   - bundler --version
 
 build_script:
-  - bundle install
+  - bundle install --jobs=7 --retry=3 --without docs debug
 
 test_script:
-  - bundle exec rake
+  - bundle exec rspec
