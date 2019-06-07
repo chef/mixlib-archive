@@ -2,6 +2,7 @@ steps:
 
 - label: run-lint-and-specs-ruby-2.4
   command:
+    - apt-get update
     - apt-get install -y libarchive-dev
     - bundle install --jobs=7 --retry=3 --without docs debug
     - bundle exec rake
@@ -12,6 +13,7 @@ steps:
 
 - label: run-lint-and-specs-ruby-2.5
   command:
+    - apt-get update
     - apt-get install -y libarchive-dev
     - bundle install --jobs=7 --retry=3 --without docs debug
     - bundle exec rake
@@ -22,6 +24,7 @@ steps:
 
 - label: run-lint-and-specs-ruby-2.6
   command:
+    - apt-get update
     - apt-get install -y libarchive-dev
     - bundle install --jobs=7 --retry=3 --without docs debug
     - bundle exec rake
