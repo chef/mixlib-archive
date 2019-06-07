@@ -6,6 +6,7 @@ platform:
 
 cache:
   - vendor/bundle
+
 environment:
   matrix:
     - ruby_version: "24-x64"
