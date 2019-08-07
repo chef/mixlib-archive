@@ -58,6 +58,7 @@ module Mixlib
       if @empty
         Dir.foreach(destination) do |entry|
           next if entry == "." || entry == ".."
+
           FileUtils.remove_entry_secure(File.join(destination, entry))
         end
       end
