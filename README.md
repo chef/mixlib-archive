@@ -1,7 +1,7 @@
 # Mixlib::Archive
 
 [![Gem Version](https://badge.fury.io/rb/mixlib-archive.svg)](https://badge.fury.io/rb/mixlib-archive)
-[![Build status](https://badge.buildkite.com/96888f3b2f7a78af28fea0350cd3737011ab0f998627439e65.svg)](https://buildkite.com/chef-oss/chef-mixlib-archive-master-verify)
+[![Build status](https://badge.buildkite.com/96888f3b2f7a78af28fea0350cd3737011ab0f998627439e65.svg?branch=master)](https://buildkite.com/chef-oss/chef-mixlib-archive-master-verify)
 
 **Umbrella Project**: [Chef Foundation](https://github.com/chef/chef-oss-practices/blob/master/projects/chef-foundation.md)
 
