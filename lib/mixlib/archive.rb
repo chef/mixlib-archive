@@ -1,5 +1,5 @@
-require "mixlib/archive/tar"
-require "mixlib/archive/version"
+require_relative "archive/tar"
+require_relative "archive/version"
 require "mixlib/log"
 require "find"
 
@@ -21,7 +21,7 @@ module Mixlib
       archive = File.expand_path(archive)
       begin
         # we prefer to use libarchive, which supports a great big pile o' stuff
-        require "mixlib/archive/lib_archive"
+        require_relative "archive/lib_archive"
         @archiver = Mixlib::Archive::LibArchive.new(archive)
       rescue LoadError
         # but if we can't use that, we'll fall back to ruby's native tar implementation
