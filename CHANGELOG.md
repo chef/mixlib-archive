@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.0.4 -->
-## [v1.0.4](https://github.com/chef/mixlib-archive/tree/v1.0.4) (2019-12-19)
+<!-- latest_release 1.0.5 -->
+## [v1.0.5](https://github.com/chef/mixlib-archive/tree/v1.0.5) (2019-12-30)
 
 #### Merged Pull Requests
-- Test on Ruby 2.7rc and other testing updates [#47](https://github.com/chef/mixlib-archive/pull/47) ([tas50](https://github.com/tas50))
+- Substitute require for require_relative [#48](https://github.com/chef/mixlib-archive/pull/48) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
 <!-- release_rollup since=1.0.1 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Substitute require for require_relative [#48](https://github.com/chef/mixlib-archive/pull/48) ([tas50](https://github.com/tas50)) <!-- 1.0.5 -->
 - Test on Ruby 2.7rc and other testing updates [#47](https://github.com/chef/mixlib-archive/pull/47) ([tas50](https://github.com/tas50)) <!-- 1.0.4 -->
 - Chefstyle fixes + test on Windows in Buildkite [#43](https://github.com/chef/mixlib-archive/pull/43) ([tas50](https://github.com/tas50)) <!-- 1.0.3 -->
 - Remove Travis and update Github templates [#40](https://github.com/chef/mixlib-archive/pull/40) ([tas50](https://github.com/tas50)) <!-- 1.0.2 -->
