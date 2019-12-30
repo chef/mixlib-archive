@@ -23,12 +23,6 @@ group :debug do
   gem "rb-readline"
 end
 
-instance_eval(ENV["GEMFILE_MOD"]) if ENV["GEMFILE_MOD"]
-
-# If you want to load debugging tools into the bundle exec sandbox,
-# add these additional dependencies into Gemfile.local
-eval_gemfile(__FILE__ + ".local") if File.exist?(__FILE__ + ".local")
-
 # These lines added for Windows (x64) development only.
 # For ffi-libarchive to function during development on Windows we need the
 # binaries in the RbConfig::CONFIG["bindir"]
