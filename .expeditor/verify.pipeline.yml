@@ -36,7 +36,7 @@ steps:
       docker:
         image: ruby:2.6-buster
 
-- label: run-lint-and-specs-ruby-2.7rc
+- label: run-lint-and-specs-ruby-2.7
   command:
     - apt-get update
     - apt-get install -y libarchive-dev
@@ -44,7 +44,7 @@ steps:
   expeditor:
     executor:
       docker:
-        image: ruby:2.7-rc-buster
+        image: ruby:2.7-buster
 
 - label: run-specs-windows
   command:
