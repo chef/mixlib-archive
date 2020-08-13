@@ -1,5 +1,5 @@
 require "rubygems/package"
-require "tempfile"
+require "tempfile" unless defined?(Tempfile)
 require "zlib"
 
 module Mixlib
