@@ -1,10 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release -->
+<!-- latest_release 1.0.7 -->
+## [v1.0.7](https://github.com/chef/mixlib-archive/tree/v1.0.7) (2020-08-21)
+
+#### Merged Pull Requests
+- Optimize our requires [#53](https://github.com/chef/mixlib-archive/pull/53) ([tas50](https://github.com/tas50))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=1.0.6 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Optimize our requires [#53](https://github.com/chef/mixlib-archive/pull/53) ([tas50](https://github.com/tas50)) <!-- 1.0.7 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
