@@ -1,7 +1,7 @@
 require_relative "archive/tar"
 require_relative "archive/version"
 require "mixlib/log"
-require "find"
+require "find" unless defined?(Find.find)
 
 module Mixlib
   class Archive

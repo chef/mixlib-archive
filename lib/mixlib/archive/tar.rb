@@ -1,6 +1,6 @@
-require "rubygems/package"
+require "rubygems/package" unless defined?(Gem::Package)
 require "tempfile" unless defined?(Tempfile)
-require "zlib"
+require "zlib" unless defined?(Zlib)
 
 module Mixlib
   class Archive
