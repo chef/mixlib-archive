@@ -1,9 +1,8 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
-require "tmpdir"
-require "mixlib/archive"
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+require "tmpdir" unless defined?(Dir.mktmpdir)
 require "mixlib/archive/tar"
 require "mixlib/archive/lib_archive"
-require "pathname"
+require "pathname" unless defined?(Pathname)
 
 module Fixtures
   def fixtures_path
@@ -11,7 +10,7 @@ module Fixtures
   end
 
   def spec_root
-    Pathname.new(File.expand_path(File.dirname(__FILE__)))
+    Pathname.new(File.expand_path(__dir__))
   end
 end
 
