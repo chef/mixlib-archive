@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.0.8 -->
-## [v1.0.8](https://github.com/chef/mixlib-archive/tree/v1.0.8) (2020-10-09)
+<!-- latest_release 1.1.0 -->
+## [v1.1.0](https://github.com/chef/mixlib-archive/tree/v1.1.0) (2021-02-10)
 
 #### Merged Pull Requests
-- Remove encoding comment we don&#39;t need [#51](https://github.com/chef/mixlib-archive/pull/51) ([tas50](https://github.com/tas50))
+- Remove Dir.chdir calls from libarchive extraction [#54](https://github.com/chef/mixlib-archive/pull/54) ([lamont-granquist](https://github.com/lamont-granquist))
 <!-- latest_release -->
 
 <!-- release_rollup since=1.0.7 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Remove Dir.chdir calls from libarchive extraction [#54](https://github.com/chef/mixlib-archive/pull/54) ([lamont-granquist](https://github.com/lamont-granquist)) <!-- 1.1.0 -->
 - Remove encoding comment we don&#39;t need [#51](https://github.com/chef/mixlib-archive/pull/51) ([tas50](https://github.com/tas50)) <!-- 1.0.8 -->
 <!-- release_rollup -->
 
