@@ -1,30 +1,27 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.1.3 -->
-## [v1.1.3](https://github.com/chef/mixlib-archive/tree/v1.1.3) (2021-02-10)
-
-#### Merged Pull Requests
-- Update Chefstyle to 1.6.2 [#57](https://github.com/chef/mixlib-archive/pull/57) ([tas50](https://github.com/tas50))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=1.0.7 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Update Chefstyle to 1.6.2 [#57](https://github.com/chef/mixlib-archive/pull/57) ([tas50](https://github.com/tas50)) <!-- 1.1.3 -->
-- Add a note about ffi-libarchive to the readme [#58](https://github.com/chef/mixlib-archive/pull/58) ([tas50](https://github.com/tas50)) <!-- 1.1.2 -->
-- Remove the pry-stack_explorer dep failing Ruby 2.4 builds [#55](https://github.com/chef/mixlib-archive/pull/55) ([tas50](https://github.com/tas50)) <!-- 1.1.1 -->
-- Remove Dir.chdir calls from libarchive extraction [#54](https://github.com/chef/mixlib-archive/pull/54) ([lamont-granquist](https://github.com/lamont-granquist)) <!-- 1.1.0 -->
-- Remove encoding comment we don&#39;t need [#51](https://github.com/chef/mixlib-archive/pull/51) ([tas50](https://github.com/tas50)) <!-- 1.0.8 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v1.1.3](https://github.com/chef/mixlib-archive/tree/v1.1.3) (2021-02-10)
+
+#### Merged Pull Requests
+- Remove encoding comment we don&#39;t need [#51](https://github.com/chef/mixlib-archive/pull/51) ([tas50](https://github.com/tas50))
+- Remove Dir.chdir calls from libarchive extraction [#54](https://github.com/chef/mixlib-archive/pull/54) ([lamont-granquist](https://github.com/lamont-granquist))
+- Remove the pry-stack_explorer dep failing Ruby 2.4 builds [#55](https://github.com/chef/mixlib-archive/pull/55) ([tas50](https://github.com/tas50))
+- Add a note about ffi-libarchive to the readme [#58](https://github.com/chef/mixlib-archive/pull/58) ([tas50](https://github.com/tas50))
+- Update Chefstyle to 1.6.2 [#57](https://github.com/chef/mixlib-archive/pull/57) ([tas50](https://github.com/tas50))
+<!-- latest_stable_release -->
+
 ## [v1.0.7](https://github.com/chef/mixlib-archive/tree/v1.0.7) (2020-08-21)
 
 #### Merged Pull Requests
 - Optimize our requires [#53](https://github.com/chef/mixlib-archive/pull/53) ([tas50](https://github.com/tas50))
-<!-- latest_stable_release -->
 
 ## [v1.0.6](https://github.com/chef/mixlib-archive/tree/v1.0.6) (2020-08-13)
 
