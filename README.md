@@ -21,6 +21,8 @@ Add this line to your application's Gemfile:
 gem 'mixlib-archive'
 ```
 
+Note: If `ffi-libarchive` is installed this gem will use libarchive. Otherwise it will fall back to tar. Make sure to install `ffi-libarchive` for the best experience.
+
 And then execute:
 
 ```shell
@@ -69,7 +71,7 @@ For information on contributing to this project please see our [Contributing Doc
 
 ## License & Copyright
 
-- Copyright:: Copyright (c) 2017-2019 Chef Software, Inc.
+- Copyright:: Copyright (c) 2017-2021 Chef Software, Inc.
 - License:: Apache License, Version 2.0
 
 ```text
