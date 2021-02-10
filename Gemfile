@@ -2,7 +2,8 @@ source "https://rubygems.org"
 
 gemspec name: "mixlib-archive"
 
-gem "ffi-libarchive"
+# need the extract=to-destination support in ffi-libarchive 1.0.17
+gem "ffi-libarchive", ">= 1.0.17"
 
 group :docs do
   gem "github-markup"
