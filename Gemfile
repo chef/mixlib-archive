@@ -5,12 +5,6 @@ gemspec name: "mixlib-archive"
 # need the extract=to-destination support in ffi-libarchive 1.0.17
 gem "ffi-libarchive", ">= 1.0.17"
 
-group :docs do
-  gem "github-markup"
-  gem "redcarpet"
-  gem "yard"
-end
-
 group :test do
   gem "chefstyle", "1.6.2"
   gem "rake"
