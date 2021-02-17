@@ -52,6 +52,14 @@ describe Mixlib::Archive::LibArchive do
       Mixlib::Archive::LibArchive.new(archive_path).extract(target)
       expect(Dir.entries(target)).to match_array file_paths
       expect(File.size("#{target}/fixture_binary")).to eql 6
+      expect(File.size("#{target}/fixture_a")).to eql 10
+      expect(File.size("#{target}/fixture_b")).to eql 10
+      expect(File.size("#{target}/fixture_c")).to eql 11 # this specifically tests windows binmode + crlf conversions
+      # we test that the file sizes in the originals haven't been changed due to crlf mangling by git itself
+      expect(File.size("#{fixtures_path}/fixture_binary")).to eql 6
+      expect(File.size("#{fixtures_path}/fixture_a")).to eql 10
+      expect(File.size("#{fixtures_path}/fixture_b")).to eql 10
+      expect(File.size("#{fixtures_path}/fixture_c")).to eql 11
     end
 
   end
