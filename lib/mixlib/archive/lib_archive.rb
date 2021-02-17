@@ -51,7 +51,7 @@ module Mixlib
               entry.pathname = fn
               stat = File.lstat(fn)
               if File.file?(fn)
-                content = File.read(fn)
+                content = File.read(fn, mode: "rb")
                 entry.size = content.bytesize
               end
               entry.mode = stat.mode
