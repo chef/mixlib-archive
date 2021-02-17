@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.1.5 -->
-## [v1.1.5](https://github.com/chef/mixlib-archive/tree/v1.1.5) (2021-02-12)
+<!-- latest_release 1.1.6 -->
+## [v1.1.6](https://github.com/chef/mixlib-archive/tree/v1.1.6) (2021-02-17)
 
 #### Merged Pull Requests
-- Cache gems and test on Ruby 3 [#59](https://github.com/chef/mixlib-archive/pull/59) ([tas50](https://github.com/tas50))
+- Fix creating archives on windows with a CRLF [#60](https://github.com/chef/mixlib-archive/pull/60) ([lamont-granquist](https://github.com/lamont-granquist))
 <!-- latest_release -->
 
 <!-- release_rollup since=1.1.4 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Fix creating archives on windows with a CRLF [#60](https://github.com/chef/mixlib-archive/pull/60) ([lamont-granquist](https://github.com/lamont-granquist)) <!-- 1.1.6 -->
 - Cache gems and test on Ruby 3 [#59](https://github.com/chef/mixlib-archive/pull/59) ([tas50](https://github.com/tas50)) <!-- 1.1.5 -->
 <!-- release_rollup -->
 
