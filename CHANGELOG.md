@@ -1,22 +1,20 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.1.6 -->
-## [v1.1.6](https://github.com/chef/mixlib-archive/tree/v1.1.6) (2021-02-17)
-
-#### Merged Pull Requests
-- Fix creating archives on windows with a CRLF [#60](https://github.com/chef/mixlib-archive/pull/60) ([lamont-granquist](https://github.com/lamont-granquist))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=1.1.4 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- Fix creating archives on windows with a CRLF [#60](https://github.com/chef/mixlib-archive/pull/60) ([lamont-granquist](https://github.com/lamont-granquist)) <!-- 1.1.6 -->
-- Cache gems and test on Ruby 3 [#59](https://github.com/chef/mixlib-archive/pull/59) ([tas50](https://github.com/tas50)) <!-- 1.1.5 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v1.1.6](https://github.com/chef/mixlib-archive/tree/v1.1.6) (2021-02-17)
+
+#### Merged Pull Requests
+- Cache gems and test on Ruby 3 [#59](https://github.com/chef/mixlib-archive/pull/59) ([tas50](https://github.com/tas50))
+- Fix creating archives on windows with a CRLF [#60](https://github.com/chef/mixlib-archive/pull/60) ([lamont-granquist](https://github.com/lamont-granquist))
+<!-- latest_stable_release -->
+
 ## [v1.1.3](https://github.com/chef/mixlib-archive/tree/v1.1.3) (2021-02-10)
 
 #### Merged Pull Requests
@@ -25,7 +23,6 @@
 - Remove the pry-stack_explorer dep failing Ruby 2.4 builds [#55](https://github.com/chef/mixlib-archive/pull/55) ([tas50](https://github.com/tas50))
 - Add a note about ffi-libarchive to the readme [#58](https://github.com/chef/mixlib-archive/pull/58) ([tas50](https://github.com/tas50))
 - Update Chefstyle to 1.6.2 [#57](https://github.com/chef/mixlib-archive/pull/57) ([tas50](https://github.com/tas50))
-<!-- latest_stable_release -->
 
 ## [v1.0.7](https://github.com/chef/mixlib-archive/tree/v1.0.7) (2020-08-21)
 
