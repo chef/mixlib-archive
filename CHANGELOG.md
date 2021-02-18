@@ -1,10 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release -->
+<!-- latest_release 1.1.7 -->
+## [v1.1.7](https://github.com/chef/mixlib-archive/tree/v1.1.7) (2021-02-18)
+
+#### Merged Pull Requests
+- Convert destination to a String [#61](https://github.com/chef/mixlib-archive/pull/61) ([lamont-granquist](https://github.com/lamont-granquist))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=1.1.6 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Convert destination to a String [#61](https://github.com/chef/mixlib-archive/pull/61) ([lamont-granquist](https://github.com/lamont-granquist)) <!-- 1.1.7 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
