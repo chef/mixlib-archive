@@ -29,7 +29,7 @@ module Mixlib
             next
           end
 
-          reader.extract(entry, flags.to_i, destination: destination)
+          reader.extract(entry, flags.to_i, destination: destination.to_s)
         end
         reader.close
       end
