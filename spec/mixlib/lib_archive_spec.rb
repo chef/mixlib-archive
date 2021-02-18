@@ -43,24 +43,36 @@ describe Mixlib::Archive::LibArchive do
       end
     end
 
-    it "creates a tarball" do
-      Dir.chdir(fixtures_path) do
-        Mixlib::Archive::LibArchive.new(archive_path).create(file_paths, gzip: true)
+    shared_examples_for "creates a tarball" do
+      it "creates a tarball" do
+        Dir.chdir(fixtures_path) do
+          Mixlib::Archive::LibArchive.new(archive_path).create(file_paths, gzip: true)
+        end
+        expect(File.file?(archive_path)).to be true
+        Mixlib::Archive::LibArchive.new(archive_path).extract(target)
+        expect(Dir.entries(target)).to match_array file_paths
+        expect(File.size("#{target}/fixture_binary")).to eql 6
+        expect(File.size("#{target}/fixture_a")).to eql 10
+        expect(File.size("#{target}/fixture_b")).to eql 10
+        expect(File.size("#{target}/fixture_c")).to eql 11 # this specifically tests windows binmode + crlf conversions
+        # we test that the file sizes in the originals haven't been changed due to crlf mangling by git itself
+        expect(File.size("#{fixtures_path}/fixture_binary")).to eql 6
+        expect(File.size("#{fixtures_path}/fixture_a")).to eql 10
+        expect(File.size("#{fixtures_path}/fixture_b")).to eql 10
+        expect(File.size("#{fixtures_path}/fixture_c")).to eql 11
       end
-      expect(File.file?(archive_path)).to be true
-      target = File.join(test_root, "target")
-      Mixlib::Archive::LibArchive.new(archive_path).extract(target)
-      expect(Dir.entries(target)).to match_array file_paths
-      expect(File.size("#{target}/fixture_binary")).to eql 6
-      expect(File.size("#{target}/fixture_a")).to eql 10
-      expect(File.size("#{target}/fixture_b")).to eql 10
-      expect(File.size("#{target}/fixture_c")).to eql 11 # this specifically tests windows binmode + crlf conversions
-      # we test that the file sizes in the originals haven't been changed due to crlf mangling by git itself
-      expect(File.size("#{fixtures_path}/fixture_binary")).to eql 6
-      expect(File.size("#{fixtures_path}/fixture_a")).to eql 10
-      expect(File.size("#{fixtures_path}/fixture_b")).to eql 10
-      expect(File.size("#{fixtures_path}/fixture_c")).to eql 11
     end
 
+    context "with a string" do
+      let(:target) { File.join(test_root, "target") }
+
+      it_behaves_like "creates a tarball"
+    end
+
+    context "with a Pathname" do
+      let(:target) { Pathname.new(test_root) + "target" }
+
+      it_behaves_like "creates a tarball"
+    end
   end
 end
