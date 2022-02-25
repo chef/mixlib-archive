@@ -9,6 +9,7 @@ group :test do
   gem "chefstyle", "1.6.2"
   gem "rake"
   gem "rspec", "~> 3.0"
+  gem "parallel", "~> 1.20.1" #pin until we support ruby 2.4
 end
 
 group :debug do
