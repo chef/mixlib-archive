@@ -1,10 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release -->
+<!-- latest_release 1.2.0 -->
+## [v1.2.0](https://github.com/chef/mixlib-archive/tree/v1.2.0) (2022-04-06)
+
+#### Merged Pull Requests
+- Remove Ruby 2.4 support &amp; Test Ruby 3.0/3.1 [#63](https://github.com/chef/mixlib-archive/pull/63) ([poorndm](https://github.com/poorndm))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=1.1.7 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- Remove Ruby 2.4 support &amp; Test Ruby 3.0/3.1 [#63](https://github.com/chef/mixlib-archive/pull/63) ([poorndm](https://github.com/poorndm)) <!-- 1.2.0 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
