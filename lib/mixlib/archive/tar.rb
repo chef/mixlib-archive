@@ -18,7 +18,7 @@ module Mixlib
       # Extracts the archive to the given +destination+
       #
       # === Parameters
-      # perms<Boolean>:: should the extracter use permissions from the archive.
+      # perms<Boolean>:: should the extractor use permissions from the archive.
       # ignore[Array]:: an array of matches of file paths to ignore
       def extract(destination, perms: true, ignore: [])
         # (http://stackoverflow.com/a/31310593/506908)
