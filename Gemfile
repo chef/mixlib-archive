@@ -6,7 +6,7 @@ gemspec name: "mixlib-archive"
 gem "ffi-libarchive", ">= 1.0.17"
 
 group :test do
-  gem "chefstyle", "1.6.2"
+  gem "cookstyle", ">= 7.32.8"
   gem "rake"
   gem "rspec", "~> 3.0"
 end
