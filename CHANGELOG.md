@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.2.2 -->
-## [v1.2.2](https://github.com/chef/mixlib-archive/tree/v1.2.2) (2024-12-10)
+<!-- latest_release 1.2.3 -->
+## [v1.2.3](https://github.com/chef/mixlib-archive/tree/v1.2.3) (2024-12-17)
 
 #### Merged Pull Requests
-- [CI] Drop EOL Rubies [#69](https://github.com/chef/mixlib-archive/pull/69) ([dafyddcrosby](https://github.com/dafyddcrosby))
+- Migrate from Chefstyle to Cookstyle [#68](https://github.com/chef/mixlib-archive/pull/68) ([dafyddcrosby](https://github.com/dafyddcrosby))
 <!-- latest_release -->
 
 <!-- release_rollup since=1.1.7 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Migrate from Chefstyle to Cookstyle [#68](https://github.com/chef/mixlib-archive/pull/68) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 1.2.3 -->
 - [CI] Drop EOL Rubies [#69](https://github.com/chef/mixlib-archive/pull/69) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 1.2.2 -->
 - Correct spelling mistakes [#65](https://github.com/chef/mixlib-archive/pull/65) ([EdwardBetts](https://github.com/EdwardBetts)) <!-- 1.2.1 -->
 - Remove Ruby 2.4 support &amp; Test Ruby 3.0/3.1 [#63](https://github.com/chef/mixlib-archive/pull/63) ([poorndm](https://github.com/poorndm)) <!-- 1.2.0 -->
