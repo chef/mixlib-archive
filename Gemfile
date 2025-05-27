@@ -6,7 +6,6 @@ gemspec name: "mixlib-archive"
 gem "ffi-libarchive", ">= 1.0.17"
 
 group :test do
-  gem "cookstyle", ">= 7.32.8"
   gem "rake"
   gem "rspec", "~> 3.0"
 end
@@ -15,6 +14,10 @@ group :debug do
   gem "pry"
   gem "pry-byebug"
   gem "rb-readline"
+end
+
+group :development do
+  gem "cookstyle", "~> 8.1"
 end
 
 # These lines added for Windows (x64) development only.
