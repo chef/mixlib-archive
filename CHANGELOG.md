@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.3.0 -->
-## [v1.3.0](https://github.com/chef/mixlib-archive/tree/v1.3.0) (2025-05-27)
+<!-- latest_release 1.3.1 -->
+## [v1.3.1](https://github.com/chef/mixlib-archive/tree/v1.3.1) (2025-09-02)
 
 #### Merged Pull Requests
-- Updating for Ruby 3.4 and Cookstyle [#71](https://github.com/chef/mixlib-archive/pull/71) ([johnmccrae](https://github.com/johnmccrae))
+- Add GitHub Security Actions Workflow [#72](https://github.com/chef/mixlib-archive/pull/72) ([sean-sype-simmons](https://github.com/sean-sype-simmons))
 <!-- latest_release -->
 
 <!-- release_rollup since=1.1.7 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Add GitHub Security Actions Workflow [#72](https://github.com/chef/mixlib-archive/pull/72) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 1.3.1 -->
 - Updating for Ruby 3.4 and Cookstyle [#71](https://github.com/chef/mixlib-archive/pull/71) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.0 -->
 - add myself to codeowners [#70](https://github.com/chef/mixlib-archive/pull/70) ([jaymzh](https://github.com/jaymzh)) <!-- 1.2.4 -->
 - Migrate from Chefstyle to Cookstyle [#68](https://github.com/chef/mixlib-archive/pull/68) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 1.2.3 -->
