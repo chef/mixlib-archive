@@ -16,10 +16,6 @@ group :debug do
   gem "rb-readline"
 end
 
-group :development do
-  gem "cookstyle", "~> 8.1"
-end
-
 # These lines added for Windows (x64) development only.
 # For ffi-libarchive to function during development on Windows we need the
 # binaries in the RbConfig::CONFIG["bindir"]
