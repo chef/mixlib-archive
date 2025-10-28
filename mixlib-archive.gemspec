@@ -12,11 +12,11 @@ Gem::Specification.new do |spec|
   spec.description   = spec.summary
   spec.homepage      = "https://github.com/chef/mixlib-archive"
   spec.license       = "Apache-2.0"
-  spec.required_ruby_version = ">= 2.5"
+  spec.required_ruby_version = ">= 3.1"
 
   spec.files         = %w{LICENSE} + Dir.glob("lib/**/*")
   spec.require_paths = ["lib"]
 
   spec.add_dependency "mixlib-log"
-  spec.add_development_dependency "cookstyle", "~> 8.1"
+  spec.add_development_dependency "cookstyle", "~> 8.5"
 end
