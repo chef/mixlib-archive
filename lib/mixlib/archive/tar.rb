@@ -1,4 +1,6 @@
 require "rubygems/package" unless defined?(Gem::Package)
+require "rubygems/package/tar_reader" unless defined?(Gem::Package::TarReader)
+require "rubygems/package/tar_writer" unless defined?(Gem::Package::TarWriter)
 require "tempfile" unless defined?(Tempfile)
 require "zlib" unless defined?(Zlib)
 
