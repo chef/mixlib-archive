@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.3.3 -->
-## [v1.3.3](https://github.com/chef/mixlib-archive/tree/v1.3.3) (2025-10-28)
+<!-- latest_release 1.3.4 -->
+## [v1.3.4](https://github.com/chef/mixlib-archive/tree/v1.3.4) (2025-11-18)
 
 #### Merged Pull Requests
-- updating gem for release [#77](https://github.com/chef/mixlib-archive/pull/77) ([johnmccrae](https://github.com/johnmccrae))
+- set up ai assisted development workflow [#76](https://github.com/chef/mixlib-archive/pull/76) ([rishichawda](https://github.com/rishichawda))
 <!-- latest_release -->
 
 <!-- release_rollup since=1.1.7 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- set up ai assisted development workflow [#76](https://github.com/chef/mixlib-archive/pull/76) ([rishichawda](https://github.com/rishichawda)) <!-- 1.3.4 -->
 - updating gem for release [#77](https://github.com/chef/mixlib-archive/pull/77) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.3 -->
 - Add GitHub Security Actions Workflow [#72](https://github.com/chef/mixlib-archive/pull/72) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 1.3.1 -->
 - Updating for Ruby 3.4 and Cookstyle [#71](https://github.com/chef/mixlib-archive/pull/71) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.0 -->
