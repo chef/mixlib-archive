@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.3.4 -->
-## [v1.3.4](https://github.com/chef/mixlib-archive/tree/v1.3.4) (2025-11-18)
+<!-- latest_release 1.3.5 -->
+## [v1.3.5](https://github.com/chef/mixlib-archive/tree/v1.3.5) (2026-06-02)
 
 #### Merged Pull Requests
-- set up ai assisted development workflow [#76](https://github.com/chef/mixlib-archive/pull/76) ([rishichawda](https://github.com/rishichawda))
+- CHEF-27670 Update and standardize copyright notices to Progress Software Corporation - copyright_update [#80](https://github.com/chef/mixlib-archive/pull/80) ([clintoncwolfe](https://github.com/clintoncwolfe))
 <!-- latest_release -->
 
 <!-- release_rollup since=1.1.7 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-27670 Update and standardize copyright notices to Progress Software Corporation - copyright_update [#80](https://github.com/chef/mixlib-archive/pull/80) ([clintoncwolfe](https://github.com/clintoncwolfe)) <!-- 1.3.5 -->
 - set up ai assisted development workflow [#76](https://github.com/chef/mixlib-archive/pull/76) ([rishichawda](https://github.com/rishichawda)) <!-- 1.3.4 -->
 - updating gem for release [#77](https://github.com/chef/mixlib-archive/pull/77) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.3 -->
 - Add GitHub Security Actions Workflow [#72](https://github.com/chef/mixlib-archive/pull/72) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 1.3.1 -->
