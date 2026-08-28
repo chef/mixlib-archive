@@ -18,5 +18,5 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "mixlib-log"
-  spec.add_development_dependency "cookstyle", "~> 8.5"
+  spec.add_development_dependency "cookstyle", "~> 9.0"
 end
