@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.3.5 -->
-## [v1.3.5](https://github.com/chef/mixlib-archive/tree/v1.3.5) (2026-06-02)
+<!-- latest_release 1.3.6 -->
+## [v1.3.6](https://github.com/chef/mixlib-archive/tree/v1.3.6) (2026-09-18)
 
 #### Merged Pull Requests
-- CHEF-27670 Update and standardize copyright notices to Progress Software Corporation - copyright_update [#80](https://github.com/chef/mixlib-archive/pull/80) ([clintoncwolfe](https://github.com/clintoncwolfe))
+- CHEF-38211: Reject path traversal via @LongLink entries in Tar extraction [#82](https://github.com/chef/mixlib-archive/pull/82) ([tpowell-progress](https://github.com/tpowell-progress))
 <!-- latest_release -->
 
 <!-- release_rollup since=1.1.7 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-38211: Reject path traversal via @LongLink entries in Tar extraction [#82](https://github.com/chef/mixlib-archive/pull/82) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 1.3.6 -->
 - CHEF-27670 Update and standardize copyright notices to Progress Software Corporation - copyright_update [#80](https://github.com/chef/mixlib-archive/pull/80) ([clintoncwolfe](https://github.com/clintoncwolfe)) <!-- 1.3.5 -->
 - set up ai assisted development workflow [#76](https://github.com/chef/mixlib-archive/pull/76) ([rishichawda](https://github.com/rishichawda)) <!-- 1.3.4 -->
 - updating gem for release [#77](https://github.com/chef/mixlib-archive/pull/77) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.3 -->
