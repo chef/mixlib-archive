@@ -26,11 +26,12 @@ module Mixlib
       def extract(destination, perms: true, ignore: [])
         # (http://stackoverflow.com/a/31310593/506908)
         ignore_re = Regexp.union(ignore)
+        destination_root = File.expand_path(destination)
         reader do |tar|
           dest = nil
           tar.each do |entry|
             if entry.full_name == TAR_LONGLINK
-              dest = File.join(destination, entry.read.strip)
+              dest = File.expand_path(File.join(destination, entry.read.strip))
               next
             end
             if entry.full_name =~ ignore_re
@@ -38,6 +39,13 @@ module Mixlib
               next
             end
             dest ||= File.expand_path(File.join(destination, entry.full_name))
+            # Reject any entry (including @LongLink-derived paths) that resolves
+            # outside destination, closing the tar-slip / path traversal bypass.
+            unless dest == destination_root || dest.start_with?(destination_root + File::SEPARATOR)
+              Mixlib::Archive::Log.warn "ignoring entry #{entry.full_name}: resolves outside #{destination}"
+              dest = nil
+              next
+            end
             parent = File.dirname(dest)
             FileUtils.mkdir_p(parent)
 
