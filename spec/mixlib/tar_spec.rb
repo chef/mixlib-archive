@@ -76,6 +76,50 @@ describe Mixlib::Archive::Tar do
 
   end
 
+  describe "#extract" do
+    let(:test_root) { Dir.mktmpdir(nil) }
+    let(:archive_path) { File.join(test_root, "malicious.tar") }
+    let(:target) { File.join(test_root, "target") }
+    let(:outside_path) { File.join(test_root, "pwned") }
+
+    # Builds a tar with a "././@LongLink" header (GNU long-name extension)
+    # whose payload is a path-traversal string, followed by a regular entry
+    # that would land at that traversed path if unfiltered.
+    def write_longlink_tar(archive_path, longlink_target, payload)
+      File.open(archive_path, "wb") do |f|
+        writer = Gem::Package::TarWriter.new(f)
+        header = Gem::Package::TarHeader.new(
+          name: Mixlib::Archive::Tar::TAR_LONGLINK,
+          typeflag: "L",
+          size: longlink_target.bytesize,
+          prefix: "",
+          mode: 0o644
+        ).to_s
+        f.write(header)
+        f.write(longlink_target.ljust((longlink_target.bytesize / 512.0).ceil * 512, "\x00"))
+        writer.add_file_simple("innocent_name.txt", 0o644, payload.bytesize) { |io| io.write(payload) }
+        writer.close
+      end
+    end
+
+    it "does not write outside destination via a @LongLink path traversal payload" do
+      write_longlink_tar(archive_path, "../pwned", "pwned!")
+
+      described_class.new(archive_path).extract(target)
+
+      expect(File.exist?(outside_path)).to be false
+    end
+
+    it "still extracts entries with legitimate long names" do
+      long_name = "a" * 200
+      write_longlink_tar(archive_path, long_name, "hello")
+
+      described_class.new(archive_path).extract(target)
+
+      expect(File.read(File.join(target, long_name))).to eq("hello")
+    end
+  end
+
   describe "#is_tar_archive?" do
     let(:raw) { double(IO, closed?: true, rewind: 0, read: data) }
     context "oldgnu style header" do
