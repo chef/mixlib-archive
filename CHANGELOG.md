@@ -1,36 +1,33 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.3.6 -->
-## [v1.3.6](https://github.com/chef/mixlib-archive/tree/v1.3.6) (2026-09-18)
-
-#### Merged Pull Requests
-- CHEF-38211: Reject path traversal via @LongLink entries in Tar extraction [#82](https://github.com/chef/mixlib-archive/pull/82) ([tpowell-progress](https://github.com/tpowell-progress))
+<!-- latest_release -->
 <!-- latest_release -->
 
-<!-- release_rollup since=1.1.7 -->
-### Changes not yet released to rubygems.org
-
-#### Merged Pull Requests
-- CHEF-38211: Reject path traversal via @LongLink entries in Tar extraction [#82](https://github.com/chef/mixlib-archive/pull/82) ([tpowell-progress](https://github.com/tpowell-progress)) <!-- 1.3.6 -->
-- CHEF-27670 Update and standardize copyright notices to Progress Software Corporation - copyright_update [#80](https://github.com/chef/mixlib-archive/pull/80) ([clintoncwolfe](https://github.com/clintoncwolfe)) <!-- 1.3.5 -->
-- set up ai assisted development workflow [#76](https://github.com/chef/mixlib-archive/pull/76) ([rishichawda](https://github.com/rishichawda)) <!-- 1.3.4 -->
-- updating gem for release [#77](https://github.com/chef/mixlib-archive/pull/77) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.3 -->
-- Add GitHub Security Actions Workflow [#72](https://github.com/chef/mixlib-archive/pull/72) ([sean-sype-simmons](https://github.com/sean-sype-simmons)) <!-- 1.3.1 -->
-- Updating for Ruby 3.4 and Cookstyle [#71](https://github.com/chef/mixlib-archive/pull/71) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.0 -->
-- add myself to codeowners [#70](https://github.com/chef/mixlib-archive/pull/70) ([jaymzh](https://github.com/jaymzh)) <!-- 1.2.4 -->
-- Migrate from Chefstyle to Cookstyle [#68](https://github.com/chef/mixlib-archive/pull/68) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 1.2.3 -->
-- [CI] Drop EOL Rubies [#69](https://github.com/chef/mixlib-archive/pull/69) ([dafyddcrosby](https://github.com/dafyddcrosby)) <!-- 1.2.2 -->
-- Correct spelling mistakes [#65](https://github.com/chef/mixlib-archive/pull/65) ([EdwardBetts](https://github.com/EdwardBetts)) <!-- 1.2.1 -->
-- Remove Ruby 2.4 support &amp; Test Ruby 3.0/3.1 [#63](https://github.com/chef/mixlib-archive/pull/63) ([poorndm](https://github.com/poorndm)) <!-- 1.2.0 -->
+<!-- release_rollup -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
+## [v1.3.6](https://github.com/chef/mixlib-archive/tree/v1.3.6) (2026-09-21)
+
+#### Merged Pull Requests
+- Remove Ruby 2.4 support &amp; Test Ruby 3.0/3.1 [#63](https://github.com/chef/mixlib-archive/pull/63) ([poorndm](https://github.com/poorndm))
+- Correct spelling mistakes [#65](https://github.com/chef/mixlib-archive/pull/65) ([EdwardBetts](https://github.com/EdwardBetts))
+- [CI] Drop EOL Rubies [#69](https://github.com/chef/mixlib-archive/pull/69) ([dafyddcrosby](https://github.com/dafyddcrosby))
+- Migrate from Chefstyle to Cookstyle [#68](https://github.com/chef/mixlib-archive/pull/68) ([dafyddcrosby](https://github.com/dafyddcrosby))
+- add myself to codeowners [#70](https://github.com/chef/mixlib-archive/pull/70) ([jaymzh](https://github.com/jaymzh))
+- Updating for Ruby 3.4 and Cookstyle [#71](https://github.com/chef/mixlib-archive/pull/71) ([johnmccrae](https://github.com/johnmccrae))
+- Add GitHub Security Actions Workflow [#72](https://github.com/chef/mixlib-archive/pull/72) ([sean-sype-simmons](https://github.com/sean-sype-simmons))
+- updating gem for release [#77](https://github.com/chef/mixlib-archive/pull/77) ([johnmccrae](https://github.com/johnmccrae))
+- set up ai assisted development workflow [#76](https://github.com/chef/mixlib-archive/pull/76) ([rishichawda](https://github.com/rishichawda))
+- CHEF-27670 Update and standardize copyright notices to Progress Software Corporation - copyright_update [#80](https://github.com/chef/mixlib-archive/pull/80) ([clintoncwolfe](https://github.com/clintoncwolfe))
+- CHEF-38211: Reject path traversal via @LongLink entries in Tar extraction [#82](https://github.com/chef/mixlib-archive/pull/82) ([tpowell-progress](https://github.com/tpowell-progress))
+<!-- latest_stable_release -->
+
 ## [v1.1.7](https://github.com/chef/mixlib-archive/tree/v1.1.7) (2021-02-18)
 
 #### Merged Pull Requests
 - Convert destination to a String [#61](https://github.com/chef/mixlib-archive/pull/61) ([lamont-granquist](https://github.com/lamont-granquist))
-<!-- latest_stable_release -->
 
 ## [v1.1.6](https://github.com/chef/mixlib-archive/tree/v1.1.6) (2021-02-17)
 
