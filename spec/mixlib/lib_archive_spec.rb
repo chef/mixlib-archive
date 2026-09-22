@@ -49,7 +49,7 @@ describe Mixlib::Archive::LibArchive do
           Mixlib::Archive::LibArchive.new(archive_path).create(file_paths, gzip: true)
         end
         expect(File.file?(archive_path)).to be true
-        Mixlib::Archive::LibArchive.new(archive_path).extract(target)
+        Mixlib::Archive::LibArchive.new(archive_path).extract(target, ignore: %w{ . .. })
         expect(Dir.entries(target)).to match_array file_paths
         expect(File.size("#{target}/fixture_binary")).to eql 6
         expect(File.size("#{target}/fixture_a")).to eql 10
