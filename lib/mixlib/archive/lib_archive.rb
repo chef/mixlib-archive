@@ -18,7 +18,12 @@ module Mixlib
       # ignore[Array]:: an array of matches of file paths to ignore
       def extract(destination, perms: true, ignore: [])
         ignore_re = Regexp.union(ignore)
-        flags = perms ? ::Archive::EXTRACT_PERM : nil
+        # EXTRACT_SECURE_SYMLINKS refuses to write through a symlink (including
+        # one from an earlier entry in this same archive) that would otherwise
+        # let a later entry escape destination (tar-slip). EXTRACT_SECURE_NODOTDOT
+        # closes the equivalent ".." based escape.
+        flags = ::Archive::EXTRACT_SECURE_SYMLINKS | ::Archive::EXTRACT_SECURE_NODOTDOT
+        flags |= ::Archive::EXTRACT_PERM if perms
         FileUtils.mkdir_p(destination)
 
         reader = ::Archive::Reader.open_filename(@archive)

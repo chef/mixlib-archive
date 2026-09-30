@@ -47,7 +47,7 @@ module Mixlib
               next
             end
             parent = File.dirname(dest)
-            FileUtils.mkdir_p(parent)
+            FileUtils.mkdir_p(parent) unless File.directory?(parent)
 
             if entry.directory? || (entry.header.typeflag == "" && entry.full_name.end_with?("/"))
               File.delete(dest) if File.file?(dest)
@@ -66,7 +66,19 @@ module Mixlib
               FileUtils.chmod(entry.header.mode, dest, verbose: false) if perms
             elsif entry.header.typeflag == "2"
               # handle symlink
-              File.symlink(entry.header.linkname, dest)
+              #
+              # A symlink whose target resolves outside destination would let a
+              # *later* entry that writes "through" this symlink escape the
+              # destination directory entirely (tar-slip). Since every path we
+              # write is already confined to destination_root, refusing to create
+              # symlinks whose own target escapes destination_root guarantees no
+              # chain of symlinks can ever lead outside of it either.
+              link_target = File.expand_path(entry.header.linkname, File.dirname(dest))
+              if link_target == destination_root || link_target.start_with?(destination_root + File::SEPARATOR)
+                File.symlink(entry.header.linkname, dest)
+              else
+                Mixlib::Archive::Log.warn "ignoring entry #{entry.full_name}: symlink target #{entry.header.linkname} resolves outside #{destination}"
+              end
             else
               Mixlib::Archive::Log.warn "unknown tar entry: #{entry.full_name} type: #{entry.header.typeflag}"
             end

@@ -118,6 +118,49 @@ describe Mixlib::Archive::Tar do
 
       expect(File.read(File.join(target, long_name))).to eq("hello")
     end
+
+    # Builds a tar with a symlink entry pointing outside of the extraction
+    # destination, followed by a regular file entry whose path travels
+    # "through" that symlink. Without a containment check on symlink targets
+    # this is the classic tar-slip attack: the symlink is planted first, then
+    # the second entry's write follows it to land anywhere on disk.
+    def write_symlink_escape_tar(archive_path, link_name, link_target, file_through_link, payload)
+      File.open(archive_path, "wb") do |f|
+        writer = Gem::Package::TarWriter.new(f)
+        writer.add_symlink(link_name, link_target, 0o777)
+        writer.add_file_simple(file_through_link, 0o644, payload.bytesize) { |io| io.write(payload) }
+        writer.close
+      end
+    end
+
+    it "does not create a symlink that escapes destination" do
+      write_symlink_escape_tar(archive_path, "link", outside_path, "link/pwned.txt", "pwned!")
+
+      described_class.new(archive_path).extract(target)
+
+      expect(File.symlink?(File.join(target, "link"))).to be false
+      expect(File.exist?(outside_path)).to be false
+    end
+
+    it "does not write a file outside destination via a symlinked path" do
+      FileUtils.mkdir_p(outside_path)
+      write_symlink_escape_tar(archive_path, "link", outside_path, "link/pwned.txt", "pwned!")
+
+      described_class.new(archive_path).extract(target)
+
+      expect(File.exist?(File.join(outside_path, "pwned.txt"))).to be false
+    end
+
+    it "still allows symlinks that resolve within destination" do
+      real_dir = File.join(target, "realdir")
+      FileUtils.mkdir_p(real_dir)
+      write_symlink_escape_tar(archive_path, "link", real_dir, "link/ok.txt", "hello")
+
+      described_class.new(archive_path).extract(target)
+
+      expect(File.symlink?(File.join(target, "link"))).to be true
+      expect(File.read(File.join(target, "realdir", "ok.txt"))).to eq("hello")
+    end
   end
 
   describe "#is_tar_archive?" do
