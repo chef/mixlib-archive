@@ -1,10 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release -->
+<!-- latest_release 1.3.7 -->
+## [v1.3.7](https://github.com/chef/mixlib-archive/tree/v1.3.7) (2026-09-30)
+
+#### Merged Pull Requests
+- fix(tar): reject symlink targets that resolve outside destination [#83](https://github.com/chef/mixlib-archive/pull/83) ([johnmccrae](https://github.com/johnmccrae))
 <!-- latest_release -->
 
-<!-- release_rollup -->
+<!-- release_rollup since=1.3.6 -->
+### Changes not yet released to rubygems.org
+
+#### Merged Pull Requests
+- fix(tar): reject symlink targets that resolve outside destination [#83](https://github.com/chef/mixlib-archive/pull/83) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.7 -->
 <!-- release_rollup -->
 
 <!-- latest_stable_release -->
