@@ -129,5 +129,15 @@ describe Mixlib::Archive::LibArchive do
 
       expect(File.exist?(File.join(outside_dir, "newdir"))).to be false
     end
+
+    it "still extracts entries with absolute paths underneath the destination" do
+      skip "libarchive absolute path handling differs on Windows" if Gem.win_platform?
+      File.delete(link)
+      build_tar { |w| w.add_file_simple("/abs/x.txt", 0o644, 2) { |io| io.write("hi") } }
+
+      described_class.new(archive_path).extract(target, ignore: [/^\.$/, %r{\.{2}/}])
+
+      expect(File.read(File.join(target, "abs", "x.txt"))).to eq("hi")
+    end
   end
 end

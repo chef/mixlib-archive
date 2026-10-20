@@ -42,7 +42,7 @@ module Mixlib
           # libarchive's secure flags do not cover every case (e.g. directories
           # created through a symlink already present in destination), so also
           # confirm the entry's real location is inside destination.
-          dest = File.expand_path(entry.pathname.to_s, destination_root)
+          dest = File.expand_path(File.join(destination_root, entry.pathname.to_s))
           unless (dest == destination_root || dest.start_with?(destination_root + File::SEPARATOR)) &&
               confined?(File.dirname(dest), real_root)
             Mixlib::Archive::Log.warn "ignoring entry #{entry.pathname}: resolves outside #{destination}"
