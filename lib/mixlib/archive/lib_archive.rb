@@ -1,8 +1,11 @@
 require "ffi-libarchive"
+require_relative "confinement"
 
 module Mixlib
   class Archive
     class LibArchive
+      include Confinement
+
       attr_reader :options
       attr_reader :archive
 
@@ -25,6 +28,8 @@ module Mixlib
         flags = ::Archive::EXTRACT_SECURE_SYMLINKS | ::Archive::EXTRACT_SECURE_NODOTDOT
         flags |= ::Archive::EXTRACT_PERM if perms
         FileUtils.mkdir_p(destination)
+        destination_root = File.expand_path(destination.to_s)
+        real_root = File.realpath(destination_root)
 
         reader = ::Archive::Reader.open_filename(@archive)
 
@@ -33,6 +38,18 @@ module Mixlib
             Mixlib::Archive::Log.warn "ignoring entry #{entry.pathname}"
             next
           end
+
+          # libarchive's secure flags do not cover every case (e.g. directories
+          # created through a symlink already present in destination), so also
+          # confirm the entry's real location is inside destination.
+          dest = File.expand_path(entry.pathname.to_s, destination_root)
+          unless (dest == destination_root || dest.start_with?(destination_root + File::SEPARATOR)) &&
+              confined?(File.dirname(dest), real_root)
+            Mixlib::Archive::Log.warn "ignoring entry #{entry.pathname}: resolves outside #{destination}"
+            next
+          end
+          # Replace, rather than follow, a symlink sitting at the entry's own path.
+          File.unlink(dest) if File.symlink?(dest)
 
           reader.extract(entry, flags.to_i, destination: destination.to_s)
         end

@@ -4,10 +4,13 @@ require "rubygems/package/tar_writer" unless defined?(Gem::Package::TarWriter)
 require "rubygems/package/tar_header" unless defined?(Gem::Package::TarHeader)
 require "tempfile" unless defined?(Tempfile)
 require "zlib" unless defined?(Zlib)
+require_relative "confinement"
 
 module Mixlib
   class Archive
     class Tar
+      include Confinement
+
       TAR_LONGLINK = "././@LongLink".freeze
 
       attr_reader :options
@@ -27,6 +30,8 @@ module Mixlib
         # (http://stackoverflow.com/a/31310593/506908)
         ignore_re = Regexp.union(ignore)
         destination_root = File.expand_path(destination)
+        FileUtils.mkdir_p(destination_root)
+        real_root = File.realpath(destination_root)
         reader do |tar|
           dest = nil
           tar.each do |entry|
@@ -46,8 +51,20 @@ module Mixlib
               dest = nil
               next
             end
+            # The lexical check above does not see symlinks that already exist on
+            # disk (pre-existing in destination or planted earlier). Confirm the
+            # real location of the parent stays within the real destination.
+            unless confined?(File.dirname(dest), real_root)
+              Mixlib::Archive::Log.warn "ignoring entry #{entry.full_name}: path traverses a symlink resolving outside #{destination}"
+              dest = nil
+              next
+            end
             parent = File.dirname(dest)
             FileUtils.mkdir_p(parent) unless File.directory?(parent)
+
+            # Never write through a symlink sitting at the entry's own path;
+            # replace it instead so open/chmod/mkdir cannot follow it.
+            File.unlink(dest) if File.symlink?(dest)
 
             if entry.directory? || (entry.header.typeflag == "" && entry.full_name.end_with?("/"))
               File.delete(dest) if File.file?(dest)
