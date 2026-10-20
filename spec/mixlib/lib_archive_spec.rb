@@ -1,4 +1,5 @@
 require "spec_helper"
+require_relative "shared_hardening_examples"
 
 describe Mixlib::Archive::LibArchive do
   let(:tar_archive) { "#{fixtures_path}/test.tar" }
@@ -74,6 +75,19 @@ describe Mixlib::Archive::LibArchive do
 
       it_behaves_like "creates a tarball"
     end
+  end
+
+  describe "hardening" do
+    def extract_archive(archive, target)
+      described_class.new(archive).extract(target, ignore: [/^\.$/, %r{\.{2}/}])
+    end
+
+    # libarchive on Windows cannot create symlinks from archive entries
+    def hs_skip_archive_symlinks?
+      Gem.win_platform?
+    end
+
+    it_behaves_like "a hardened extractor"
   end
 
   describe "#extract into a destination with a pre-existing symlink" do

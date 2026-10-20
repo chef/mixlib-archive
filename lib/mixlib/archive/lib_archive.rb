@@ -30,6 +30,7 @@ module Mixlib
         FileUtils.mkdir_p(destination)
         destination_root = File.expand_path(destination.to_s)
         real_root = File.realpath(destination_root)
+        created_links = []
 
         reader = ::Archive::Reader.open_filename(@archive)
 
@@ -45,15 +46,42 @@ module Mixlib
           dest = File.expand_path(File.join(destination_root, entry.pathname.to_s))
           unless (dest == destination_root || dest.start_with?(destination_root + File::SEPARATOR)) &&
               confined?(File.dirname(dest), real_root)
-            Mixlib::Archive::Log.warn "ignoring entry #{entry.pathname}: resolves outside #{destination}"
+            reject_entry "ignoring entry #{entry.pathname}: resolves outside #{destination}"
             next
           end
+
+          # Only regular files, directories and symlinks are extracted. Hardlinks
+          # (which can alias files outside destination) and device nodes, fifos
+          # and sockets are refused, matching the Tar extractor.
+          hardlink = entry.hardlink
+          unless hardlink.nil? || hardlink.empty?
+            reject_entry "ignoring entry #{entry.pathname}: hardlinks are not supported"
+            next
+          end
+          unless entry.file? || entry.directory? || entry.symbolic_link?
+            reject_entry "ignoring entry #{entry.pathname}: unsupported entry type"
+            next
+          end
+
+          if entry.symbolic_link?
+            unless symlink_target_confined?(dest, entry.symlink.to_s, real_root)
+              reject_entry "ignoring entry #{entry.pathname}: symlink target #{entry.symlink} resolves outside #{destination}"
+              next
+            end
+            created_links << dest
+          elsif entry.directory? && File.symlink?(dest) && File.directory?(dest) && confined?(dest, real_root)
+            # leave an existing in-destination symlinked directory in place
+            next
+          end
+
+          entry.mode = safe_mode(entry.mode)
           # Replace, rather than follow, a symlink sitting at the entry's own path.
           File.unlink(dest) if File.symlink?(dest)
 
           reader.extract(entry, flags.to_i, destination: destination.to_s)
         end
         reader.close
+        prune_escaping_symlinks(created_links, real_root)
       end
 
       # Creates an archive with the given set of +files+

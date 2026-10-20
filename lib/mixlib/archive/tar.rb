@@ -32,6 +32,7 @@ module Mixlib
         destination_root = File.expand_path(destination)
         FileUtils.mkdir_p(destination_root)
         real_root = File.realpath(destination_root)
+        created_links = []
         reader do |tar|
           dest = nil
           tar.each do |entry|
@@ -47,7 +48,7 @@ module Mixlib
             # Reject any entry (including @LongLink-derived paths) that resolves
             # outside destination, closing the tar-slip / path traversal bypass.
             unless dest == destination_root || dest.start_with?(destination_root + File::SEPARATOR)
-              Mixlib::Archive::Log.warn "ignoring entry #{entry.full_name}: resolves outside #{destination}"
+              reject_entry "ignoring entry #{entry.full_name}: resolves outside #{destination}"
               dest = nil
               next
             end
@@ -55,10 +56,29 @@ module Mixlib
             # disk (pre-existing in destination or planted earlier). Confirm the
             # real location of the parent stays within the real destination.
             unless confined?(File.dirname(dest), real_root)
-              Mixlib::Archive::Log.warn "ignoring entry #{entry.full_name}: path traverses a symlink resolving outside #{destination}"
+              reject_entry "ignoring entry #{entry.full_name}: path traverses a symlink resolving outside #{destination}"
               dest = nil
               next
             end
+
+            is_dir = entry.directory? || (entry.header.typeflag == "" && entry.full_name.end_with?("/"))
+            is_file = entry.file? || (entry.header.typeflag == "" && !entry.full_name.end_with?("/"))
+            is_symlink = entry.header.typeflag == "2"
+
+            unless is_dir || is_file || is_symlink
+              # hardlinks, devices, fifos...: none can be extracted safely
+              reject_entry "ignoring entry #{entry.full_name}: unsupported tar entry type #{entry.header.typeflag.inspect}"
+              dest = nil
+              next
+            end
+
+            # A directory entry over an existing symlinked directory that stays
+            # inside destination is left alone instead of being replaced.
+            if is_dir && File.symlink?(dest) && File.directory?(dest) && confined?(dest, real_root)
+              dest = nil
+              next
+            end
+
             parent = File.dirname(dest)
             FileUtils.mkdir_p(parent) unless File.directory?(parent)
 
@@ -66,43 +86,43 @@ module Mixlib
             # replace it instead so open/chmod/mkdir cannot follow it.
             File.unlink(dest) if File.symlink?(dest)
 
-            if entry.directory? || (entry.header.typeflag == "" && entry.full_name.end_with?("/"))
+            if is_dir
               File.delete(dest) if File.file?(dest)
 
               if perms
-                FileUtils.mkdir_p(dest, mode: entry.header.mode, verbose: false)
+                FileUtils.mkdir_p(dest, mode: safe_mode(entry.header.mode), verbose: false)
               else
                 FileUtils.mkdir_p(dest, verbose: false)
               end
 
-            elsif entry.file? || (entry.header.typeflag == "" && !entry.full_name.end_with?("/"))
+            elsif is_file
               FileUtils.rm_rf(dest) if File.directory?(dest)
-              File.open(dest, "wb") do |f|
-                f.print(entry.read)
+              # NOFOLLOW narrows the window in which a symlink swapped in after
+              # the checks above could be followed.
+              flags = File::WRONLY | File::CREAT | File::TRUNC | File::BINARY | (defined?(File::NOFOLLOW) ? File::NOFOLLOW : 0)
+              File.open(dest, flags, 0o666) do |f|
+                IO.copy_stream(entry, f)
               end
-              FileUtils.chmod(entry.header.mode, dest, verbose: false) if perms
-            elsif entry.header.typeflag == "2"
+              FileUtils.chmod(safe_mode(entry.header.mode), dest, verbose: false) if perms
+            else
               # handle symlink
               #
-              # A symlink whose target resolves outside destination would let a
-              # *later* entry that writes "through" this symlink escape the
-              # destination directory entirely (tar-slip). Since every path we
-              # write is already confined to destination_root, refusing to create
-              # symlinks whose own target escapes destination_root guarantees no
-              # chain of symlinks can ever lead outside of it either.
-              link_target = File.expand_path(entry.header.linkname, File.dirname(dest))
-              if link_target == destination_root || link_target.start_with?(destination_root + File::SEPARATOR)
+              # The target is resolved against the real filesystem (a lexical
+              # check is fooled by ".." after another symlink) and must stay
+              # inside destination; a final sweep below catches links whose
+              # meaning is changed by a later entry.
+              if symlink_target_confined?(dest, entry.header.linkname, real_root)
                 File.symlink(entry.header.linkname, dest)
+                created_links << dest
               else
-                Mixlib::Archive::Log.warn "ignoring entry #{entry.full_name}: symlink target #{entry.header.linkname} resolves outside #{destination}"
+                reject_entry "ignoring entry #{entry.full_name}: symlink target #{entry.header.linkname} resolves outside #{destination}"
               end
-            else
-              Mixlib::Archive::Log.warn "unknown tar entry: #{entry.full_name} type: #{entry.header.typeflag}"
             end
 
             dest = nil
           end
         end
+        prune_escaping_symlinks(created_links, real_root)
       end
 
       # Creates an archive with the given set of +files+

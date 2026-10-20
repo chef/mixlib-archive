@@ -1,4 +1,5 @@
 require "spec_helper"
+require_relative "shared_hardening_examples"
 
 describe Mixlib::Archive::Tar do
   let(:tar_archive) { "../fixtures/test.tar" }
@@ -269,6 +270,14 @@ describe Mixlib::Archive::Tar do
 
       expect(File.read(File.join(inside_dir, "ok.txt"))).to eq("hello")
     end
+  end
+
+  describe "hardening" do
+    def extract_archive(archive, target)
+      described_class.new(archive).extract(target, ignore: [/^\.$/, %r{\.{2}/}])
+    end
+
+    it_behaves_like "a hardened extractor"
   end
 
   describe "#is_tar_archive?" do
