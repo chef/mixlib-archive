@@ -32,7 +32,7 @@ module Mixlib
         destination_root = File.expand_path(destination)
         FileUtils.mkdir_p(destination_root)
         real_root = File.realpath(destination_root)
-        created_links = []
+        created_links = existing_confined_symlinks(destination_root, real_root)
         reader do |tar|
           dest = nil
           tar.each do |entry|

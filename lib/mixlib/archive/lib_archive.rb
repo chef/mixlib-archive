@@ -30,7 +30,7 @@ module Mixlib
         FileUtils.mkdir_p(destination)
         destination_root = File.expand_path(destination.to_s)
         real_root = File.realpath(destination_root)
-        created_links = []
+        created_links = existing_confined_symlinks(destination_root, real_root)
 
         reader = ::Archive::Reader.open_filename(@archive)
 

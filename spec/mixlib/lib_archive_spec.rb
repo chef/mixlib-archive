@@ -144,6 +144,56 @@ describe Mixlib::Archive::LibArchive do
       expect(File.exist?(File.join(outside_dir, "newdir"))).to be false
     end
 
+    it "replaces a pre-existing symlink to an outside file without modifying its target" do
+      File.delete(link)
+      File.symlink(outside_file, link)
+      File.chmod(0o600, outside_file)
+      build_tar { |w| w.add_file_simple("link", 0o777, 6) { |io| io.write("pwned!") } }
+
+      described_class.new(archive_path).extract(target, ignore: %w{ . .. })
+
+      expect(File.read(outside_file)).to eq("original")
+      expect(File.stat(outside_file).mode & 0o777).to eq(0o600) unless Gem.win_platform?
+    end
+
+    it "does not write through a dangling pre-existing symlink" do
+      File.delete(link)
+      missing = File.join(outside_dir, "not_yet")
+      File.symlink(missing, link)
+      build_tar { |w| w.add_file_simple("link/pwned.txt", 0o644, 6) { |io| io.write("pwned!") } }
+
+      described_class.new(archive_path).extract(target, ignore: %w{ . .. })
+
+      expect(File.exist?(missing)).to be false
+    end
+
+    # Intentional difference from Tar: EXTRACT_SECURE_SYMLINKS makes libarchive
+    # refuse to write through any symlinked directory, even one that stays
+    # inside destination, so the entry is skipped rather than extracted.
+    it "does not extract through a pre-existing symlink inside destination (stricter than Tar)" do
+      File.delete(link)
+      inside_dir = File.join(target, "realdir")
+      FileUtils.mkdir_p(inside_dir)
+      File.symlink(inside_dir, link)
+      build_tar { |w| w.add_file_simple("link/ok.txt", 0o644, 5) { |io| io.write("hello") } }
+
+      expect { described_class.new(archive_path).extract(target, ignore: %w{ . .. }) }.not_to raise_error
+
+      expect(File.exist?(File.join(outside_dir, "ok.txt"))).to be false
+      expect(File.symlink?(link)).to be true
+    end
+
+    it "removes a pre-existing symlink that an archive entry causes to escape" do
+      skip "libarchive cannot create symlinks from entries on Windows" if Gem.win_platform?
+      File.delete(link)
+      File.symlink("x/..", File.join(target, "T"))
+      build_tar { |w| w.add_symlink("x", ".", 0o777) }
+
+      described_class.new(archive_path).extract(target, ignore: %w{ . .. })
+
+      expect(File.symlink?(File.join(target, "T"))).to be false
+    end
+
     it "still extracts entries with absolute paths underneath the destination" do
       skip "libarchive absolute path handling differs on Windows" if Gem.win_platform?
       File.delete(link)

@@ -37,6 +37,17 @@ module Mixlib
         false
       end
 
+      # Symlinks already present under +root+ whose target currently resolves
+      # inside +real_root+. Links that already escape are the caller's own and
+      # are left alone; these are re-checked after extraction because a later
+      # archive entry can change where they resolve. Dir.glob does not descend
+      # into symlinked directories.
+      def existing_confined_symlinks(root, real_root)
+        Dir.glob(File.join(root, "**", "*"), File::FNM_DOTMATCH).select do |path|
+          File.symlink?(path) && symlink_target_confined?(path, File.readlink(path), real_root)
+        end
+      end
+
       # Removes symlinks created during extraction that, now that the whole
       # archive has been written, resolve outside +real_root+. This catches
       # links whose meaning changed because of a later entry.

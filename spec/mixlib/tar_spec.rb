@@ -259,6 +259,16 @@ describe Mixlib::Archive::Tar do
       expect(File.exist?(missing)).to be false
     end
 
+    it "removes a pre-existing symlink that an archive entry causes to escape" do
+      File.delete(link)
+      File.symlink("x/..", File.join(target, "T"))
+      build_tar { |w| w.add_symlink("x", ".", 0o777) }
+
+      described_class.new(archive_path).extract(target)
+
+      expect(File.symlink?(File.join(target, "T"))).to be false
+    end
+
     it "still extracts normally through a pre-existing symlink that stays inside destination" do
       File.delete(link)
       inside_dir = File.join(target, "realdir")
