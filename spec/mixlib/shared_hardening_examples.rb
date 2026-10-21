@@ -97,6 +97,47 @@ RSpec.shared_examples "a hardened extractor" do
     expect(File.symlink?(File.join(hs_target, "evil"))).to be false
   end
 
+  {
+    "up" => "..",
+    "up_slash" => "../",
+    "up_sibling" => "../outside",
+    "d/up_two" => "../..",
+    "d/up_deep" => "../../outside/secret.txt",
+  }.each do |name, linkname|
+    it "does not create symlink #{name} -> #{linkname} that reaches the destination's parent or above" do
+      hs_symlinks_supported!
+      hs_build do |w|
+        w.mkdir("d", 0o755)
+        w.add_symlink(name, linkname, 0o777)
+      end
+
+      extract_archive(hs_archive, hs_target)
+
+      expect(File.symlink?(File.join(hs_target, name))).to be false
+    end
+  end
+
+  it "does not create an absolute symlink to the destination's parent directory" do
+    hs_symlinks_supported!
+    hs_build { |w| w.add_symlink("up_abs", hs_root, 0o777) }
+
+    extract_archive(hs_archive, hs_target)
+
+    expect(File.symlink?(File.join(hs_target, "up_abs"))).to be false
+  end
+
+  it "allows a symlink whose '..' stays inside the destination" do
+    hs_symlinks_supported!
+    hs_build do |w|
+      w.mkdir("d", 0o755)
+      w.add_symlink("d/up_one", "..", 0o777) # d/.. is the destination itself
+    end
+
+    extract_archive(hs_archive, hs_target)
+
+    expect(File.symlink?(File.join(hs_target, "d", "up_one"))).to be true
+  end
+
   it "does not create a symlink whose '..' after another symlink escapes the destination" do
     hs_symlinks_supported!
     hs_build do |w|
