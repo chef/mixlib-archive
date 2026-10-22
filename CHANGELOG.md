@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.3.7 -->
-## [v1.3.7](https://github.com/chef/mixlib-archive/tree/v1.3.7) (2026-09-30)
+<!-- latest_release 1.3.8 -->
+## [v1.3.8](https://github.com/chef/mixlib-archive/tree/v1.3.8) (2026-10-22)
 
 #### Merged Pull Requests
-- fix(tar): reject symlink targets that resolve outside destination [#83](https://github.com/chef/mixlib-archive/pull/83) ([johnmccrae](https://github.com/johnmccrae))
+- CHEF-38215: Confine extraction when destination contains symlinks [#84](https://github.com/chef/mixlib-archive/pull/84) ([johnmccrae](https://github.com/johnmccrae))
 <!-- latest_release -->
 
 <!-- release_rollup since=1.3.6 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- CHEF-38215: Confine extraction when destination contains symlinks [#84](https://github.com/chef/mixlib-archive/pull/84) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.8 -->
 - fix(tar): reject symlink targets that resolve outside destination [#83](https://github.com/chef/mixlib-archive/pull/83) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.7 -->
 <!-- release_rollup -->
 
