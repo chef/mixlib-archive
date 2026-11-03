@@ -1,17 +1,18 @@
 <!-- usage documentation: http://expeditor-docs.es.chef.io/configuration/changelog/ -->
 # Change Log
 
-<!-- latest_release 1.3.8 -->
-## [v1.3.8](https://github.com/chef/mixlib-archive/tree/v1.3.8) (2026-10-22)
+<!-- latest_release 1.3.9 -->
+## [v1.3.9](https://github.com/chef/mixlib-archive/tree/v1.3.9) (2026-11-03)
 
 #### Merged Pull Requests
-- CHEF-38215: Confine extraction when destination contains symlinks [#84](https://github.com/chef/mixlib-archive/pull/84) ([johnmccrae](https://github.com/johnmccrae))
+- Update cookstyle requirement from ~&gt; 8.5 to ~&gt; 9.0 [#81](https://github.com/chef/mixlib-archive/pull/81) ([dependabot[bot]](https://github.com/dependabot[bot]))
 <!-- latest_release -->
 
 <!-- release_rollup since=1.3.6 -->
 ### Changes not yet released to rubygems.org
 
 #### Merged Pull Requests
+- Update cookstyle requirement from ~&gt; 8.5 to ~&gt; 9.0 [#81](https://github.com/chef/mixlib-archive/pull/81) ([dependabot[bot]](https://github.com/dependabot[bot])) <!-- 1.3.9 -->
 - CHEF-38215: Confine extraction when destination contains symlinks [#84](https://github.com/chef/mixlib-archive/pull/84) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.8 -->
 - fix(tar): reject symlink targets that resolve outside destination [#83](https://github.com/chef/mixlib-archive/pull/83) ([johnmccrae](https://github.com/johnmccrae)) <!-- 1.3.7 -->
 <!-- release_rollup -->
